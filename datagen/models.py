@@ -10,15 +10,12 @@ class Country(models.Model):
         db_table = 'Country'
     countryCode = models.CharField(max_length=3, primary_key=True)
     countryName = models.CharField(max_length=256)
-    nationality = models.CharField(max_length=256)
     def getCountryCode(self):
         return self.countryCode
     def getCountryName(self):
         return self.countryName
-    def getNationality(self):
-        return self.nationality
     def __str__(self):
-        return self.countryCode + " " + self.countryName + " " + self.nationality
+        return self.countryCode + " " + self.countryName
 
 @python_2_unicode_compatible
 class Race(models.Model):
