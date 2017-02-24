@@ -6,5 +6,5 @@ The goal of this project is to implement a data generator that takes as input a 
 
 ## Software Used
 * Bitnami Django Stack 1.10.5
-* Postgresql 9.6.2
+* Python 2.7.12 (default installation from django stack)
 * Pgadmin3
