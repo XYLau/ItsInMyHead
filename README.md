@@ -37,3 +37,8 @@ DATABASES = {
 2. Run <code>python manage.py makemigrations</code> 
 3. Run <code>python manage.py migrate</code> 
 
+## Create a user in DB
+1. Create superuser <code>python manage.py createsuperuser</code>
+Username: admin
+Email address: admin@example.com
+Password: postgres
