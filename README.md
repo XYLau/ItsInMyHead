@@ -9,7 +9,7 @@ The goal of this project is to implement a data generator that takes as input a 
 * Python 2.7.12 (default installation from django stack)
 * Pgadmin3
 
-## To Run
+## Setup
 1. Open Settings.py in ItsInMyHead/
 2. Under database, replace the following under DATABASES:
 
@@ -25,3 +25,15 @@ DATABASES = {
     }
 }
 </code>
+
+3. Run the following command to check that it works
+<code> python manage.py runserver </code>
+
+4. Run the following command in Django stack
+<code> python manage.py migrate </code>
+
+## Making changes to DB
+1. Change models in model.py
+2. Run <code>python manage.py makemigrations</code> 
+3. Run <code>python manage.py migrate</code> 
+
