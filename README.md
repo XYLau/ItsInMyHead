@@ -8,3 +8,32 @@ The goal of this project is to implement a data generator that takes as input a 
 * Bitnami Django Stack 1.10.5
 * Python 2.7.12 (default installation from django stack)
 * Pgadmin3
+
+## Setup
+1. Open Settings.py in ItsInMyHead/
+2. Under database, replace the following under DATABASES:
+
+<code> 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'HOST': '**your drive**\Bitnami\djangostack-1.10.5-0\postgresql',
+        'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': '**your bitami postgres password**
+    }
+}
+</code>
+
+3. Run the following command to check that it works
+<code> python manage.py runserver </code>
+
+4. Run the following command in Django stack
+<code> python manage.py migrate </code>
+
+## Making changes to DB
+1. Change models in model.py
+2. Run <code>python manage.py makemigrations</code> 
+3. Run <code>python manage.py migrate</code> 
+
