@@ -10,6 +10,3 @@ INSERT INTO "Race" VALUES (6, 'French');
 
 -- COUNT = 7
 SELECT COUNT(1) FROM "Race";
-
--- QUERY = 'Chinese'
-SELECT "raceDesc" FROM "Race" WHERE "raceId" = 1;

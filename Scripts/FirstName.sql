@@ -1,3 +1,5 @@
+DELETE FROM "LastName" WHERE 1=1;
+
 INSERT INTO "LastName" VALUES (1, 'An', 1);
 INSERT INTO "LastName" VALUES (2, 'Ang', 1);
 INSERT INTO "LastName" VALUES (3, 'Ao', 1);

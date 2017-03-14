@@ -1,3 +1,5 @@
+DELETE FROM "FirstName" WHERE 1=1;
+
 INSERT INTO "FirstName" VALUES (1, 'Roger', 'M', 0);
 INSERT INTO "FirstName" VALUES (2, 'Rebecca', 'F', 0);
 INSERT INTO "FirstName" VALUES (3, 'Linda', 'F', 0);
