@@ -31,6 +31,23 @@ class Race(models.Model):
         return str(self.raceId) + " " + self.raceDesc
 
 @python_2_unicode_compatible
+class CountryRace(models.Model):
+    class Meta:
+        db_table = 'CountryRace'
+
+    countryCode = models.ForeignKey(Country, on_delete=models.CASCADE)
+    raceId = models.ForeignKey(Race, on_delete=models.CASCADE)
+
+    def getCountryCode(self):
+        return self.countryCode
+
+    def getRace(self):
+        return Race.getRaceDesc(self.raceId)
+
+    def __str__(self):
+        return self.countryCode + " " + self.getRace()
+
+@python_2_unicode_compatible
 class FirstName(models.Model):
     class Meta:
         db_table = 'FirstName'
@@ -66,14 +83,12 @@ class LastName(models.Model):
         return str(self.lastNameId) + " " + self.lastName + " " + self.getRace()
 
 @python_2_unicode_compatible
-class CountryRace(models.Model):
+class Address(models.Model):
     class Meta:
-        db_table = 'CountryRace'
+        db_table = 'Address'
     countryCode = models.ForeignKey(Country, on_delete=models.CASCADE)
-    raceId = models.ForeignKey(Race, on_delete=models.CASCADE)
-    def getCountryCode(self):
-        return self.countryCode
-    def getRace(self):
-        return Race.getRaceDesc(self.raceId)
+    postalCode = models.CharField(max_length=32)
+    addressDesc = models.CharField(max_length=500)
+
     def __str__(self):
-        return self.countryCode + " " + self.getRace()
+        return str(self.addressDesc + "\n" + self.postalCode + ", " +  self.countryCode)
