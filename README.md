@@ -38,7 +38,7 @@ Step 2. Connect to the db using the credentials in settings.py
 Step 3. Run the scripts in the following order:
 
 If you're testing the application, run test.sql
-If you're using the full db, run Country.sql, Race.sql, FirstName.sql, LastName.sql, Address.sql
+If you're using the full db, run Country.sql, Race.sql, CountryRace.sql, FirstName.sql, LastName.sql, Address.sql
 
 ## Making changes to DB
 1. Change models in model.py
