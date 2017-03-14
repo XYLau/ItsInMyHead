@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search using post</title>
+</head>
+<body>
+    <form action="/data/search-post" method="post">
+        {% csrf_token %}
+        <input type="text" name="country">
+        <input type="text" name="code">
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- result display. rlt is defined in search.py-->
+    <p>{{ rlt }} </p>
+</body>
+</html>
