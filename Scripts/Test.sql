@@ -1,4 +1,4 @@
--- COUNTRY
+﻿-- COUNTRY
 DELETE FROM "Country" WHERE 1=1;
 INSERT INTO "Country" VALUES ('AUS', 'Australia');
 INSERT INTO "Country" VALUES ('CAN', 'Canada');
@@ -21,7 +21,25 @@ INSERT INTO "Race" VALUES (5, 'African');
 INSERT INTO "Race" VALUES (6, 'French');
 -- COUNTRYRACE
 DELETE FROM "CountryRace" WHERE 1=1;
-
+INSERT INTO "CountryRace" VALUES (1, 'AUS', '4');
+INSERT INTO "CountryRace" VALUES (2, 'AUS', '6');
+INSERT INTO "CountryRace" VALUES (3, 'CAN', '4');
+INSERT INTO "CountryRace" VALUES (4, 'CAN', '6');
+INSERT INTO "CountryRace" VALUES (5, 'HKG', '1');
+INSERT INTO "CountryRace" VALUES (6, 'HKG', '2');
+INSERT INTO "CountryRace" VALUES (7, 'MYS', '1');
+INSERT INTO "CountryRace" VALUES (8, 'MYS', '2');
+INSERT INTO "CountryRace" VALUES (9, 'PHL', '3');
+INSERT INTO "CountryRace" VALUES (10, 'PHL', '4');
+INSERT INTO "CountryRace" VALUES (11, 'SGP', '1');
+INSERT INTO "CountryRace" VALUES (12, 'SGP', '2');
+INSERT INTO "CountryRace" VALUES (13, 'SGP', '3');
+INSERT INTO "CountryRace" VALUES (14, 'THA', '1');
+INSERT INTO "CountryRace" VALUES (15, 'THA', '3');
+INSERT INTO "CountryRace" VALUES (16, 'GBR', '4');
+INSERT INTO "CountryRace" VALUES (17, 'GBR', '6');
+INSERT INTO "CountryRace" VALUES (18, 'USA', '4');
+INSERT INTO "CountryRace" VALUES (19, 'USA', '5');
 -- FIRSTNAME
 DELETE FROM "FirstName" WHERE 1=1;
 INSERT INTO "FirstName" VALUES (1, 'Roger', 'M', 0);
@@ -61,6 +79,7 @@ INSERT INTO "LastName" VALUES (8, 'Toure', 5);
 INSERT INTO "LastName" VALUES (9, 'Sayegh', 6);
 INSERT INTO "LastName" VALUES (10, 'Koury', 6);
 -- ADDRESS
+DELETE FROM "Address" WHERE 1=1;
 INSERT INTO "Address" VALUES (1, '2609', '1/44-46 Maryborough St', 'AUS');
 INSERT INTO "Address" VALUES (2, '2911', 'MITCHELL', 'AUS');
 INSERT INTO "Address" VALUES (3, 'T3K4T5', '62 Panorama Hills Cir NW', 'CAN');
