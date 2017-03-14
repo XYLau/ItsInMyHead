@@ -3,7 +3,6 @@ migrations/
 
 # IDE
 .idea/
-settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -94,3 +93,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Setting.py local configration
+ItsInMyHead/settings.py
+
+ItsInMyHead/settings.py
