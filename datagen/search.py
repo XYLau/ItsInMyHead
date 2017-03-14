@@ -14,8 +14,15 @@ def search_post(request):
         para[2] = request.POST['code']
 
         # search in database
-        country_result = Country.objects.get(countryCode=para[2])
+
+        # country_result = Country.objects.get(countryCode=para[2])
+
+        country_all = Country.objects.all()
+
+        ctx['rlt'] = ""
+        for item in country_all:
+            ctx['rlt'] += (item.countryCode + " " + item.countryName) + "<br/>"
 
         # value to display in generate.html
-        ctx['rlt'] = country_result.countryCode + " " + country_result.countryName
+        # ctx['rlt'] = country_result.countryCode + " " + country_result.countryName
     return render(request, "generate.html", ctx)

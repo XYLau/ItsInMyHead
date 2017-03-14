@@ -13,6 +13,10 @@
     </form>
 
     <!-- result display. rlt is defined in search.py-->
-    <p>{{ rlt }} </p>
+    <p>
+        {% autoescape off %}
+        {{ rlt }}
+        {% endautoescape %}
+    </p>
 </body>
 </html>
