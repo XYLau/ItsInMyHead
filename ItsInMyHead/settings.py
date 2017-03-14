@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        # 'HOST': '/Users/Hae/Projects/cs4221/ItsInMyHead ',
+        # 'HOST': '/Applications/djangostack-1.10.5-0/postgresql',
         'HOST': 'C:\Bitnami\djangostack-1.10.5-0\postgresql',
         'PORT': '5432',
         'USER': 'postgres',
@@ -112,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# TIME_ZONE = 'Asia/Singapore'
 TIME_ZONE = 'SG'
 
 USE_I18N = True
