@@ -32,6 +32,14 @@ DATABASES = {
 4. Run the following command in Django stack
 <code> python manage.py migrate </code>
 
+5. Load data into DB
+Step 1. Download/Open PgAdmin3 (PgAdmin4 doesn't work, don't bother)
+Step 2. Connect to the db using the credentials in settings.py
+Step 3. Run the scripts in the following order:
+
+If you're testing the application, run test.sql
+If you're using the full db, run Country.sql, Race.sql, FirstName.sql, LastName.sql, Address.sql
+
 ## Making changes to DB
 1. Change models in model.py
 2. Run <code>python manage.py makemigrations</code> 
