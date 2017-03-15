@@ -11,6 +11,7 @@ def search_post(request):
     display = []
     if request.POST:
         check_list = request.POST.getlist('check_list')
+        rows = request.POST['rows']
 
         # deal with gender filter
         if "gender" in check_list:
@@ -64,6 +65,10 @@ def search_post(request):
                     if "gender" in check_list:
                         attr['Gender'] = item_first.gender
 
+                    if "address" in check_list:
+                        # TODO : finish address generate
+                        attr['Address'] = "Address"
+
                     if "country" in check_list:
                         for item_country in country_obj:
                             attr_country = copy.copy(attr)
@@ -73,4 +78,6 @@ def search_post(request):
                     else:
                         display.append(attr)
 
+        if len(display) > rows:
+            display = display[:rows]
     return render(request, "generate.html", {'datas': display})

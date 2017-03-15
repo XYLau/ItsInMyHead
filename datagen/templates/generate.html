@@ -17,16 +17,16 @@
         <input type="text" name="country" placeholder="country">
         <input type="text" name="gender" placeholder="gender">
         <input type="text" name="race" placeholder="race">
+        <input type="number" name="rows" placeholder="number of rows">
         <input type="submit" value="Generate">
     </form>
 
     <!-- result display. rlt is defined in search.py-->
     <p>
         {% autoescape off %}
+            {{ datas|length }} rows of data generated! </br>
+
             {% for item in datas %}
-{#                {% for key, value in item.items %}#}
-{#                        {{ value }},#}
-{#                {% endfor %}#}
                 {% if item.Name %}
                     {{ item.Name }},
                 {% endif %}
@@ -40,7 +40,7 @@
                     {{ item.Race }},
                 {% endif %}
                 {% if item.Address %}
-                    {{ item.Address }}.
+                    {{ item.Address }}
                 {% endif %}
                 </br>
             {% endfor %}
