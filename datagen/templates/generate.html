@@ -23,7 +23,27 @@
     <!-- result display. rlt is defined in search.py-->
     <p>
         {% autoescape off %}
-        {{ rlt }}
+            {% for item in datas %}
+{#                {% for key, value in item.items %}#}
+{#                        {{ value }},#}
+{#                {% endfor %}#}
+                {% if item.Name %}
+                    {{ item.Name }},
+                {% endif %}
+                {% if item.Gender %}
+                    {{ item.Gender }},
+                {% endif %}
+                {% if item.CountryName %}
+                    {{ item.CountryName }},
+                {% endif %}
+                {% if item.Race %}
+                    {{ item.Race }},
+                {% endif %}
+                {% if item.Address %}
+                    {{ item.Address }}.
+                {% endif %}
+                </br>
+            {% endfor %}
         {% endautoescape %}
     </p>
 </body>
