@@ -11,7 +11,7 @@ def search_post(request):
     display = []
     if request.POST:
         check_list = request.POST.getlist('check_list')
-        rows = request.POST['rows']
+        rows = int(request.POST['rows'])
 
         # deal with gender filter
         if "gender" in check_list:
@@ -79,5 +79,6 @@ def search_post(request):
                         display.append(attr)
 
         if len(display) > rows:
-            display = display[:rows]
+            del display[rows:]
+
     return render(request, "generate.html", {'datas': display})
