@@ -11,7 +11,10 @@ def search_post(request):
     display = []
     if request.POST:
         check_list = request.POST.getlist('check_list')
-        rows = int(request.POST['rows'])
+        # default set 100 rows of data
+        rows = 100
+        if request.POST['rows']:
+            rows = int(request.POST['rows'])
 
         # deal with gender filter
         if "gender" in check_list:
