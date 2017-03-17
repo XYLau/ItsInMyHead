@@ -1,0 +1,9 @@
+- Don't cut off results (limit the processing)
+- Use raw queries not the ORM
+- Expand the data generation types (algo, dataset, natural dist)
+- Stats distribution
+- Security
+
+
+- udpate schema
+- look into secure queries

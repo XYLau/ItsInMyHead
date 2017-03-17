@@ -999,7 +999,7 @@ INSERT INTO "Address" VALUES (996, '15301', '2200 Tanger Boulevard, Space 102, W
 INSERT INTO "Address" VALUES (997, '48855', '1475 North Burkhart Road #C140, Howell, MI', 'USA');
 INSERT INTO "Address" VALUES (998, '48326', '4040 Baldwin Road, Auburn Hills, MI', 'USA');
 INSERT INTO "Address" VALUES (999, '25705', '3300 US-60, Huntington, WV', 'USA');
-INSERT INTO "Address" VALUES (1000, '60611', '114 E Oak St, Chicago, IL', 'USA');
+INSERT INTO "Address" VALUES (1000, '60611', '114 E Oak St, Chicago, IL', 'USA');\
 
 -- COUNT = 1000
 SELECT COUNT(1) FROM "Address";
