@@ -25,25 +25,52 @@
     <p>
         {% autoescape off %}
             {{ datas|length }} rows of data generated! </br>
+            
+            {% if datas %}
+                <table>
 
-            {% for item in datas %}
-                {% if item.Name %}
-                    {{ item.Name }},
+                <!-- header of the table-->
+                <tr>
+                {% if datas.0.Name %}
+                    <th> Name </th>
                 {% endif %}
-                {% if item.Gender %}
-                    {{ item.Gender }},
+                {% if datas.0.Gender %}
+                    <th> Gender </th>
                 {% endif %}
-                {% if item.CountryName %}
-                    {{ item.CountryName }},
+                {% if datas.0.CountryName %}
+                    <th> CountryName </th>
                 {% endif %}
-                {% if item.Race %}
-                    {{ item.Race }},
+                {% if datas.0.Race %}
+                    <th> Race </th>
                 {% endif %}
-                {% if item.Address %}
-                    {{ item.Address }}
+                {% if datas.0.Address %}
+                    <th> Addressce </th>
                 {% endif %}
-                </br>
-            {% endfor %}
+                </tr>
+
+                {% for item in datas %}
+                    <tr>
+                    {% if item.Name %}
+                        <td>{{ item.Name }}</td>
+                    {% endif %}
+                    {% if item.Gender %}
+                        <td>{{ item.Gender }}</td>
+                    {% endif %}
+                    {% if item.CountryName %}
+                        <td>{{ item.CountryName }}</td>
+                    {% endif %}
+                    {% if item.Race %}
+                        <td>{{ item.Race }}</td>
+                    {% endif %}
+                    {% if item.Address %}
+                        <td>{{ item.Address }}</td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+
+                </table>
+            {% endif %}
+
         {% endautoescape %}
     </p>
 </body>
