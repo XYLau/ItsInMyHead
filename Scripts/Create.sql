@@ -1,0 +1,67 @@
+﻿DROP TABLE IF EXISTS CCCompany;
+DROP TABLE IF EXISTS Address;
+DROP TABLE IF EXISTS LastName;
+DROP TABLE IF EXISTS FirstName;
+DROP TABLE IF EXISTS Gender;
+DROP TABLE IF EXISTS CountryRace;
+DROP TABLE IF EXISTS Country;
+DROP TABLE IF EXISTS Race;
+DROP TYPE IF EXISTS Gendertype;
+
+CREATE TABLE Country (
+	countryCode VARCHAR(3) NOT NULL,
+	countryName VARCHAR(256) NOT NULL,
+	PRIMARY KEY (countryCode)
+);
+
+CREATE TABLE Race (
+	raceId INTEGER NOT NULL,
+	raceDesc VARCHAR(256) NOT NULL,
+	PRIMARY KEY (raceId)
+); 
+
+CREATE TABLE CountryRace (
+	countryCode VARCHAR(3) NOT NULL,
+	raceId INTEGER NOT NULL,
+	FOREIGN KEY (raceId) REFERENCES Race ON DELETE CASCADE,
+	FOREIGN KEY (countryCode) REFERENCES Country ON DELETE CASCADE,
+	PRIMARY KEY (countryCode, raceId)
+);
+
+CREATE TYPE GenderType AS ENUM('F', 'M');
+
+CREATE TABLE Gender (
+	gender GenderType NOT NULL,
+	genderDesc VARCHAR(7) NOT NULL,
+	PRIMARY KEY (gender)
+);
+
+CREATE TABLE FirstName (
+	firstName VARCHAR(256) NOT NULL,
+	gender GenderType NOT NULL,
+	raceId INTEGER NOT NULL,
+	FOREIGN KEY (raceId) REFERENCES Race ON DELETE CASCADE,
+	FOREIGN KEY (gender) REFERENCES Gender ON DELETE CASCADE,
+	PRIMARY KEY (firstName, gender, raceId)
+);
+
+CREATE TABLE LastName (
+	lastName VARCHAR(256) NOT NULL,
+	raceId INTEGER NOT NULL,
+	FOREIGN KEY (raceId) REFERENCES Race ON DELETE CASCADE
+);
+
+CREATE TABLE Address (
+	postalCode VARCHAR(32) NOT NULL,
+	addressDesc VARCHAR(500) NOT NULL,
+	countryCode VARCHAR(3) NOT NULL, 
+	FOREIGN KEY (countryCode) REFERENCES Country ON DELETE CASCADE,
+	PRIMARY KEY (addressDesc)
+);
+
+CREATE TABLE CCCompany (
+	companyName VARCHAR(256) NOT NULL,
+	prefix INTEGER NOT NULL,
+	length INTEGER NOT NULL,
+	PRIMARY KEY (companyName, prefix)
+);
