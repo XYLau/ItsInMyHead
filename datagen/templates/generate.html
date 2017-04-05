@@ -12,7 +12,7 @@
 
     <div class="container">
         <form action="/data/search-post" method="post">
-            {% csrf_token %}
+           {% csrf_token %}
             <div class="container">
                 <!--name-->
                 <div class="row">
@@ -98,6 +98,20 @@
                     <div class="col-sm-4">
                     </div>
                 </div>
+                
+                <!--credit card-->
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="check_list" value="credit_card">
+                                Credit Card
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
 
                 <!--generate buttom and number of rows-->
                 <div class="row">
@@ -137,6 +151,9 @@
                             {% if datas.0.Address %}
                                 <th> Addressce </th>
                             {% endif %}
+                            {% if datas.0.CreditCard %}
+                                <th> Credit Card # </th>
+                            {% endif %}
                             </tr>
                         </thead>
                         <tbody>
@@ -156,6 +173,9 @@
                             {% endif %}
                             {% if item.Address %}
                                 <td>{{ item.Address }}</td>
+                            {% endif %}
+                            {% if item.CreditCard %}
+                                <td>{{ item.CreditCard }}</td>
                             {% endif %}
                             </tr>
                         {% endfor %}

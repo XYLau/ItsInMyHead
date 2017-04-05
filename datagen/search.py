@@ -6,6 +6,7 @@ from django.db import connection
 from datagen.models import *
 import copy
 import itertools
+from random import randint
 
 # search using post
 def search_post(request):
@@ -46,6 +47,10 @@ def search_post(request):
         if "address" in check_list:
             display.append("Address Selected!")
             # TODO: select. wait until address model complete
+            
+        # Credit Card 
+        if "credit_card" in check_list:
+            credit_card_obj = CCCompany.objects.all()
 
         # Select from db
 
@@ -72,6 +77,10 @@ def search_post(request):
                     if "address" in check_list:
                         # TODO : finish address generate
                         attr['Address'] = "Address"
+                        
+                    # for credit card --> not sure correct not
+                    if "credit_card" in check_list:
+                        attr["CreditCard"] = generate_credit_card_num(credit_card_obj)
 
                     if "country" in check_list:
                         for item_country in country_obj:
@@ -105,3 +114,28 @@ def joinNames(arr1, arr2, limit):
                 break
     result["Name"] = names
     return result
+
+                                   
+def digits_of(number):
+    return [int(i) for i in str(number)]
+
+def luhn_checksum(partial_card):
+    odd_digits = partial_card[-1::-2]
+    even_digits = partial_card[-2::-2]
+    total = sum(digits_of(odd_digits))
+    for digit in even_digits:
+        total += sum(2*(digits_of(digit)))
+    return str((9 * total) % 10)                               
+
+def generate_credit_card_num(credit_card_obj):
+    credit_card = random.choice(credit_card_obj)
+    prefix = str(credit_card.prefix)
+    credit_card_num_array = list(prefix)
+    length = credit_card.length
+    lengthLeft = length - len(prefix) - 1
+    for index in range(0, int(lengthLeft)):
+        credit_card_num_array.append(str(randint(0,9)))
+                
+    credit_card_num_array.append(luhn_checksum(ccn))
+    credit_card_num = ''.join(credit_card_num_array)
+    return credit_card_num

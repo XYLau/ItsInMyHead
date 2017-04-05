@@ -92,3 +92,25 @@ class Address(models.Model):
 
     def __str__(self):
         return str(self.addressDesc + "\n" + self.postalCode + ", " +  self.countryCode)
+
+@python_2_unicode_compatible
+class CCCompany(models.Model):
+    class Meta:
+        db_table = 'CCCompany'
+        unique_together = (("companyName", "prefix"),)
+    companyId = models.AutoField(primary_key=True)
+    companyName = models.CharField(max_length=256)
+    prefix = models.IntegerField(default=100)
+    length = models.IntegerField(default=10)
+        
+    
+    def getCompanyId(self):
+        return self.companyId
+    def getCompanyName(self):
+        return self.companyName
+    def getPrefix(self):
+        return self.prefix
+    def getLength(self):
+        return self.length
+    def __str__(self):
+        return str(self.ccCompanyId) + " " + self.companyName + " " + self.prefix + " " + self.length()
