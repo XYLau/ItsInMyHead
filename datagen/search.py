@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.views.decorators import csrf
+from django.db import connection
 
 from datagen.models import *
 import copy
-
+import itertools
 
 # search using post
 def search_post(request):
@@ -85,3 +86,22 @@ def search_post(request):
             del display[rows:]
 
     return render(request, "generate.html", {'datas': display})
+
+def joinNames(arr1, arr2, limit):
+    result = dict()
+    names = []
+    count = 0
+    isLimit = False
+
+    while (isLimit == False):
+        for r in itertools.product(arr1, arr2):
+            if count < limit:
+                newName = str(r[0]) + str(r[1])
+                names.append(newName)
+                print "count = ", count,", name = ", newName
+                count += 1
+            else:
+                isLimit = True
+                break
+    result["Name"] = names
+    return result
