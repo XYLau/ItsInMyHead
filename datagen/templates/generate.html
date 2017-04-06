@@ -25,12 +25,12 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="jumbotron">
         <form action="/DataGenerator/" method="post">
             {% csrf_token %}
             <div class="container">
 
-                <!--Name-->
+                <!--name-->
                 <div class="row">
                     <div class="col-sm-2">
                         <input class="magic-checkbox" type="checkbox" name="check_list" value="name" id="checkName">
@@ -39,20 +39,20 @@
                 </div>
                 <br>
 
-                <!--Gender-->
+                <!--gender-->
                 <div class="row">
                     <div class="col-sm-2">
                         <input class="magic-checkbox" type="checkbox" name="check_list" value="gender" id="checkGender">
                         <label for="checkGender"> Gender </label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="male_percent"
                                    placeholder="Male Percentage" id="male_percent_id" disabled="disabled">
                             <span class="input-group-addon">%</span>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="female_percent"
                                    placeholder="Female Percentage" id="female_percent_id" disabled="disabled">
@@ -75,13 +75,20 @@
                             <select class="form-control" name="country_name_1" id="country_name_1_id"
                                     disabled="disabled">
                                 <option>No Preference</option>
-                                <option>Singapore</option>
-                                <option>Malaysia</option>
-                                <option>China</option>
+                                <option> Australia</option>
+                                <option> Canada</option>
+                                <option> Hong Kong</option>
+                                <option> Malaysia</option>
+                                <option> Philippines</option>
+                                <option> Singapore</option>
+                                <option> Thailand</option>
+                                <option> United Kingdom</option>
+                                <option> United States</option>
+                                <option> Indonesia</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="country_percent_1"
                                    placeholder="Percentage" id="country_percent_1_id" disabled="disabled">
@@ -93,13 +100,20 @@
                             <select class="form-control" name="country_name_2" id="country_name_2_id"
                                     disabled="disabled">
                                 <option>No Preference</option>
-                                <option>Singapore</option>
-                                <option>Malaysia</option>
-                                <option>China</option>
+                                <option> Australia</option>
+                                <option> Canada</option>
+                                <option> Hong Kong</option>
+                                <option> Malaysia</option>
+                                <option> Philippines</option>
+                                <option> Singapore</option>
+                                <option> Thailand</option>
+                                <option> United Kingdom</option>
+                                <option> United States</option>
+                                <option> Indonesia</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="country_percent_2"
                                    placeholder="Percentage" id="country_percent_2_id" disabled="disabled">
@@ -119,29 +133,43 @@
                         <div class="form-group">
                             <select class="form-control" name="race_name_1" id="race_name_1_id" disabled="disabled">
                                 <option>No Preference</option>
-                                <option>Chinese</option>
-                                <option>Indian</option>
-                                <option>Malayan</option>
+                                <option> Generic</option>
+                                <option> Chinese</option>
+                                <option> Indian</option>
+                                <option> Malay</option>
+                                <option> American</option>
+                                <option> African</option>
+                                <option> French</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="race_percent_1"
-                               placeholder="Percentage" id="race_percent_1_id" disabled="disabled">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="race_percent_1"
+                                   placeholder="Percentage" id="race_percent_1_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <select class="form-control" name="race_name_2" id="race_name_2_id" disabled="disabled">
                                 <option>No Preference</option>
-                                <option>Chinese</option>
-                                <option>Indian</option>
-                                <option>Malayan</option>
+                                <option> Generic</option>
+                                <option> Chinese</option>
+                                <option> Indian</option>
+                                <option> Malay</option>
+                                <option> American</option>
+                                <option> African</option>
+                                <option> French</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="race_percent_2"
-                               placeholder="Percentage" id="race_percent_2_id" disabled="disabled">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="race_percent_2"
+                                   placeholder="Percentage" id="race_percent_2_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                 </div>
 
@@ -152,10 +180,58 @@
                                id="checkAddress">
                         <label for="checkAddress"> Address </label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select class="form-control" name="address_name_1" id="address_name_1_id"
+                                    disabled="disabled">
+                                <option>No Preference</option>
+                                <option> Australia</option>
+                                <option> Canada</option>
+                                <option> Hong Kong</option>
+                                <option> Malaysia</option>
+                                <option> Philippines</option>
+                                <option> Singapore</option>
+                                <option> Thailand</option>
+                                <option> United Kingdom</option>
+                                <option> United States</option>
+                                <option> Indonesia</option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="address_percent_1"
+                                   placeholder="Percentage" id="address_percent_1_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select class="form-control" name="address_name_2" id="address_name_2_id"
+                                    disabled="disabled">
+                                <option>No Preference</option>
+                                <option> Australia</option>
+                                <option> Canada</option>
+                                <option> Hong Kong</option>
+                                <option> Malaysia</option>
+                                <option> Philippines</option>
+                                <option> Singapore</option>
+                                <option> Thailand</option>
+                                <option> United Kingdom</option>
+                                <option> United States</option>
+                                <option> Indonesia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="address_percent_2"
+                                   placeholder="Percentage" id="address_percent_2_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+
                 </div>
-                <br>
 
                 <!--credit card-->
                 <div class="row">
@@ -168,12 +244,24 @@
                         <div class="form-group">
                             <select class="form-control" name="cc_name_1" id="cc_name_1_id" disabled="disabled">
                                 <option>No Preference</option>
+                                <option>American Express</option>
+                                <option>Bankcard</option>
+                                <option>China UnionPay</option>
+                                <option>Diners Club Carte Blanche</option>
+                                <option>Discover Card</option>
+                                <option>InterPayment</option>
+                                <option>JCB</option>
+                                <option>Laser</option>
+                                <option>MasterCard</option>
+                                <option>Solo</option>
+                                <option>Switch</option>
                                 <option>Visa</option>
-                                <option>Mastercard</option>
+                                <option>UATP</option>
+                                <option>Verve</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="cc_percent_1"
                                    placeholder="Percentage" id="cc_percent_1_id" disabled="disabled">
@@ -185,12 +273,24 @@
                         <div class="form-group">
                             <select class="form-control" name="cc_name_2" id="cc_name_2_id" disabled="disabled">
                                 <option>No Preference</option>
+                                <option>American Express</option>
+                                <option>Bankcard</option>
+                                <option>China UnionPay</option>
+                                <option>Diners Club Carte Blanche</option>
+                                <option>Discover Card</option>
+                                <option>InterPayment</option>
+                                <option>JCB</option>
+                                <option>Laser</option>
+                                <option>MasterCard</option>
+                                <option>Solo</option>
+                                <option>Switch</option>
                                 <option>Visa</option>
-                                <option>Mastercard</option>
+                                <option>UATP</option>
+                                <option>Verve</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <input type="number" min="1" max="100" class="form-control" name="cc_percent_2"
                                    placeholder="Percentage" id="cc_percent_2_id" disabled="disabled">
@@ -213,69 +313,168 @@
             </div>
 
         </form>
-
-        <!-- result display. rlt is defined in search.py-->
-        <div>
-            {% autoescape off %}
-
-                {% if datas %}
-                    <table class="table table-striped table-bordered">
-                        <caption> {{ datas|length }} rows of data generated!</caption>
-                        <!-- header of the table-->
-                        <thead>
-                        <tr>
-                            {% if datas.0.Name %}
-                                <th> Name</th>
-                            {% endif %}
-                            {% if datas.0.Gender %}
-                                <th> Gender</th>
-                            {% endif %}
-                            {% if datas.0.CountryName %}
-                                <th> Country Name</th>
-                            {% endif %}
-                            {% if datas.0.Race %}
-                                <th> Race</th>
-                            {% endif %}
-                            {% if datas.0.Address %}
-                                <th> Address</th>
-                            {% endif %}
-                            {% if datas.0.CreditCard %}
-                                <th> Credit Card</th>
-                            {% endif %}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for item in datas %}
-                            <tr>
-                                {% if item.Name %}
-                                    <td>{{ item.Name }}</td>
-                                {% endif %}
-                                {% if item.Gender %}
-                                    <td>{{ item.Gender }}</td>
-                                {% endif %}
-                                {% if item.CountryName %}
-                                    <td>{{ item.CountryName }}</td>
-                                {% endif %}
-                                {% if item.Race %}
-                                    <td>{{ item.Race }}</td>
-                                {% endif %}
-                                {% if item.Address %}
-                                    <td>{{ item.Address }}</td>
-                                {% endif %}
-                                {% if item.CreditCard %}
-                                    <td>{{ item.CreditCard }}</td>
-                                {% endif %}
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-
-                    </table>
-                {% endif %}
-
-            {% endautoescape %}
-        </div>
     </div>
 
+    {#present data#}
+    {% if datas %}
+        <div class="jumbotron">
+            <div class="container">
+                <p> {{ datas|length }} rows of data generated!</p>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active" id="sub_page_1"><a> Generated Data</a></li>
+                    <li role="presentation" id="sub_page_2"><a> SQL </a></li>
+                </ul>
+            </div>
+
+            <!-- result display. rlt is defined in search.py-->
+            <div class="container" id="table_data">
+                {% autoescape off %}
+
+                    {% if datas %}
+                        <table class="table table-striped table-bordered">
+                            <!-- header of the table-->
+                            <thead>
+                            <tr>
+                                {% if datas.0.Name %}
+                                    <th> Name</th>
+                                {% endif %}
+                                {% if datas.0.Gender %}
+                                    <th> Gender</th>
+                                {% endif %}
+                                {% if datas.0.CountryName %}
+                                    <th> Country Name</th>
+                                {% endif %}
+                                {% if datas.0.Race %}
+                                    <th> Race</th>
+                                {% endif %}
+                                {% if datas.0.Address %}
+                                    <th> Address</th>
+                                {% endif %}
+                                {% if datas.0.CreditCard %}
+                                    <th> Credit Card</th>
+                                {% endif %}
+                            </tr>
+                            </thead>
+
+                            <!-- body of the table-->
+                            <tbody>
+                            {% for item in datas %}
+                                <tr>
+                                    {% if item.Name %}
+                                        <td>{{ item.Name }}</td>
+                                    {% endif %}
+                                    {% if item.Gender %}
+                                        <td>{{ item.Gender }}</td>
+                                    {% endif %}
+                                    {% if item.CountryName %}
+                                        <td>{{ item.CountryName }}</td>
+                                    {% endif %}
+                                    {% if item.Race %}
+                                        <td>{{ item.Race }}</td>
+                                    {% endif %}
+                                    {% if item.Address %}
+                                        <td>{{ item.Address }}</td>
+                                    {% endif %}
+                                    {% if item.CreditCard %}
+                                        <td>{{ item.CreditCard }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    {% endif %}
+
+                {% endautoescape %}
+            </div>
+
+            <div class="container" id="sql_data">
+                {% autoescape off %}
+                    {% if datas %}
+                        <div class="container">
+                            <!-- create table -->
+                            <p>
+                                CREATE TABLE Generated( <br>
+                                {% if datas.0.Name %}
+                                    name varchar(40), <br>
+                                {% endif %}
+                                {% if datas.0.Gender %}
+                                    gender varchar(5), <br>
+                                {% endif %}
+                                {% if datas.0.Country %}
+                                    name country(30), <br>
+                                {% endif %}
+                                {% if datas.0.Race %}
+                                    race varchar(20), <br>
+                                {% endif %}
+                                {% if datas.0.Address %}
+                                    address varchar100), <br>
+                                {% endif %}
+                                {% if datas.0.CreditCard %}
+                                    credit_card varchar(30), <br>
+                                {% endif %}
+                                );
+                            </p>
+                            <!-- insertion -->
+                            <p>
+                                {% for item in datas %}
+                                    {% with item|length as counter %}
+                                        INSERT INTO Generated(
+                                        {% if item.Name %}
+                                            name,
+                                        {% endif %}
+                                        {% if item.Gender %}
+                                            gender,
+                                        {% endif %}
+                                        {% if item.Country %}
+                                            country,
+                                        {% endif %}
+                                        {% if item.Race %}
+                                            race,
+                                        {% endif %}
+                                        {% if item.Address %}
+                                            address,
+                                        {% endif %}
+                                        {% if item.CreditCard %}
+                                            credit_card,
+                                        {% endif %}
+                                        )
+
+                                        {#  values  #}
+                                        VALUES (
+                                        {% if item.Name %}
+                                            '{{ item.Name }}',
+                                        {% endif %}
+                                        {% if item.Gender %}
+                                            '{{ item.Gender }}',
+                                        {% endif %}
+                                        {% if item.Country %}
+                                            '{{ item.Country }}',
+                                        {% endif %}
+                                        {% if item.Race %}
+                                            '{{ item.Race }}',
+                                        {% endif %}
+                                        {% if item.Address %}
+                                            '{{ item.Address }}',
+                                        {% endif %}
+                                        {% if item.CreditCard %}
+                                            '{{ item.CreditCard }}',
+                                        {% endif %}
+
+                                        ); <br>
+                                    {% endwith %}
+                                {% endfor %}
+
+                            </p>
+                        </div>
+
+                    {% endif %}
+                {% endautoescape %}
+
+            </div>
+
+        </div>
+    {% endif %}
 </div>
 
 <!-- js -->
@@ -331,6 +530,23 @@
         }
     });
 
+    {#address#}
+    $("#checkAddress").click(function () {
+        var isChecked = $(this).prop("checked");
+        if (!isChecked) {
+            $("#address_percent_1_id").attr('disabled', 'disabled');
+            $("#address_percent_2_id").attr('disabled', 'disabled');
+            $("#address_name_1_id").attr('disabled', 'disabled');
+            $("#address_name_2_id").attr('disabled', 'disabled');
+        }
+        else {
+            $("#address_percent_1_id").removeAttr('disabled');
+            $("#address_percent_2_id").removeAttr('disabled');
+            $("#address_name_1_id").removeAttr('disabled');
+            $("#address_name_2_id").removeAttr('disabled');
+        }
+    });
+
     {#credit card#}
     $("#checkCard").click(function () {
         var isChecked = $(this).prop("checked");
@@ -348,6 +564,7 @@
         }
     });
 
+
     {# dynamic value of percentage#}
     $("#male_percent_id").change(function () {
         var val = 100 - $(this).val();
@@ -363,10 +580,33 @@
         var val = 100 - $(this).val();
         $("#race_percent_2_id").val(val);
     });
+
+    $("#address_percent_1_id").change(function () {
+        var val = 100 - $(this).val();
+        $("#address_percent_2_id").val(val);
+    });
+
     $("#cc_percent_1_id").change(function () {
         var val = 100 - $(this).val();
         $("#cc_percent_2_id").val(val);
     });
+
+    {#  Two pages of data present  #}
+
+    $("#sub_page_2").click(function () {
+        $("#table_data").hide();
+        $("#sub_page_1").removeAttr('class');
+        $("#sub_page_2").attr('class', 'active');
+        $("#sql_data").show();
+    });
+
+    $("#sub_page_1").click(function () {
+        $("#sql_data").hide();
+        $("#sub_page_2").removeAttr('class');
+        $("#sub_page_1").attr('class', 'active');
+        $("#table_data").show();
+    });
+
 </script>
 
 </body>
