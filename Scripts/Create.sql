@@ -13,9 +13,10 @@ CREATE TABLE Race (
 	PRIMARY KEY (raceId)
 ); 
 
-CREATE TABLE CountryRace (
+CREATE TABLE CountryRaceStats (
 	countryCode VARCHAR(3) NOT NULL,
 	raceId INTEGER NOT NULL,
+    occurrence INTEGER NOT NULL DEFAULT 1,
 	FOREIGN KEY (raceId) REFERENCES Race ON DELETE CASCADE,
 	FOREIGN KEY (countryCode) REFERENCES Country ON DELETE CASCADE,
 	PRIMARY KEY (countryCode, raceId)
