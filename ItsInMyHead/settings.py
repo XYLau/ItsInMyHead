@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*di8(1ek9$mj@tlmjz3ywph7n46#c#(9$v4g3-jy-ce62-ly$b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "*"
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        # 'HOST': '/Applications/djangostack-1.10.5-0/postgresql',
-        'HOST': 'C:\Bitnami\djangostack-1.10.5-0\postgresql',
+        'HOST': '/Applications/djangostack-1.10.5-0/postgresql',
+        # 'HOST': 'C:\Bitnami\djangostack-1.10.5-0\postgresql',
         'PORT': '5432',
         'USER': 'postgres',
         'PASSWORD': 'postgres'
@@ -112,8 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# TIME_ZONE = 'Asia/Singapore'
-TIME_ZONE = 'SG'
+TIME_ZONE = 'Asia/Singapore'
+# TIME_ZONE = 'SG'
 
 USE_I18N = True
 

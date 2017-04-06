@@ -7,7 +7,7 @@ def index(request):
     return HttpResponse("Data Generator Page")
 
 def manual(request):
-    return HttpResponse("User Manual Page")
+    return render(request, "manual.html")
 
 def documentation(request):
-    return HttpResponse("Documentation Page")
+    return render(request, "documentation.html")

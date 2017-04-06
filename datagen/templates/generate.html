@@ -95,6 +95,17 @@
                     </div>
                 </div>
 
+                <!--credit card-->
+                <div class="row">
+                    <div class="col-sm-2">
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="credit_card" id="checkCard">
+                        <label for="checkCard"> Credit Card </label>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+
+                </br>
                 <!--generate bottom and number of rows-->
                 <div class="row">
                     <div class="col-sm-2">
@@ -125,13 +136,16 @@
                                 <th> Gender </th>
                             {% endif %}
                             {% if datas.0.CountryName %}
-                                <th> CountryName </th>
+                                <th> Country Name </th>
                             {% endif %}
                             {% if datas.0.Race %}
                                 <th> Race </th>
                             {% endif %}
                             {% if datas.0.Address %}
-                                <th> Addressce </th>
+                                <th> Address </th>
+                            {% endif %}
+                            {% if datas.0.CreditCard %}
+                                <th> Credit Card </th>
                             {% endif %}
                             </tr>
                         </thead>
@@ -152,6 +166,9 @@
                             {% endif %}
                             {% if item.Address %}
                                 <td>{{ item.Address }}</td>
+                            {% endif %}
+                            {% if item.CreditCard %}
+                                <td>{{ item.CreditCard }}</td>
                             {% endif %}
                             </tr>
                         {% endfor %}
