@@ -6,6 +6,7 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/bootstrap.min.css" %} "/>
     <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/magic-check.css" %} "/>
+    <script src="{% static "datagen/bootstrap/js/jquery.min.js" %}"></script>
 
 </head>
 
@@ -36,7 +37,7 @@
                         <label for="checkName"> Name </label>
                     </div>
                 </div>
-                </br>
+                <br>
 
                 <!--Gender-->
                 <div class="row">
@@ -45,17 +46,22 @@
                         <label for="checkGender"> Gender </label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="male_percent"
-                               placeholder="Male Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="male_percent"
+                                   placeholder="Male Percentage" id="male_percent_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="female_percent"
-                               placeholder="Female Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="female_percent"
+                                   placeholder="Female Percentage" id="female_percent_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
 
                 </div>
-                </br>
-
+                <br>
 
                 <!--country-->
                 <div class="row">
@@ -64,15 +70,11 @@
                                id="checkCountry">
                         <label for="checkCountry"> Country </label>
                     </div>
-{#                    <div class="col-sm-3">#}
-{#                        <div class="form-group" >#}
-{#                            <input type="text" class="form-control" name="country" placeholder="country">#}
-{#                        </div>#}
-{#                    </div>#}
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select class="form-control" name="country_name_1">
-                                <option>NONE</option>
+                            <select class="form-control" name="country_name_1" id="country_name_1_id"
+                                    disabled="disabled">
+                                <option>No Preference</option>
                                 <option>Singapore</option>
                                 <option>Malaysia</option>
                                 <option>China</option>
@@ -80,20 +82,29 @@
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="country_percent_1"
-                               placeholder="Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="country_percent_1"
+                                   placeholder="Percentage" id="country_percent_1_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                     <div class="col-sm-2">
-                        <select class="form-control" name="country_name_2">
-                            <option>NONE</option>
-                            <option>Singapore</option>
-                            <option>Malaysia</option>
-                            <option>China</option>
-                        </select>
+                        <div class="form-group">
+                            <select class="form-control" name="country_name_2" id="country_name_2_id"
+                                    disabled="disabled">
+                                <option>No Preference</option>
+                                <option>Singapore</option>
+                                <option>Malaysia</option>
+                                <option>China</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="country_percent_2"
-                               placeholder="Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="country_percent_2"
+                                   placeholder="Percentage" id="country_percent_2_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                 </div>
 
@@ -103,15 +114,11 @@
                         <input class="magic-checkbox" type="checkbox" name="check_list" value="race" id="checkRace">
                         <label for="checkRace"> Race </label>
                     </div>
-{#                    <div class="col-sm-2">#}
-{#                        <div class="form-group">#}
-{#                            <input type="text" class="form-control" name="race" placeholder="race">#}
-{#                        </div>#}
-{#                    </div>#}
+
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select class="form-control" name="race_name_1">
-                                <option>NONE</option>
+                            <select class="form-control" name="race_name_1" id="race_name_1_id" disabled="disabled">
+                                <option>No Preference</option>
                                 <option>Chinese</option>
                                 <option>Indian</option>
                                 <option>Malayan</option>
@@ -120,12 +127,12 @@
                     </div>
                     <div class="col-sm-2">
                         <input type="number" min="1" max="100" class="form-control" name="race_percent_1"
-                               placeholder="Percentage">
+                               placeholder="Percentage" id="race_percent_1_id" disabled="disabled">
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select class="form-control" name="race_name_2">
-                                <option>NONE</option>
+                            <select class="form-control" name="race_name_2" id="race_name_2_id" disabled="disabled">
+                                <option>No Preference</option>
                                 <option>Chinese</option>
                                 <option>Indian</option>
                                 <option>Malayan</option>
@@ -134,7 +141,7 @@
                     </div>
                     <div class="col-sm-2">
                         <input type="number" min="1" max="100" class="form-control" name="race_percent_2"
-                               placeholder="Percentage">
+                               placeholder="Percentage" id="race_percent_2_id" disabled="disabled">
                     </div>
                 </div>
 
@@ -148,7 +155,7 @@
                     <div class="col-sm-4">
                     </div>
                 </div>
-                </br>
+                <br>
 
                 <!--credit card-->
                 <div class="row">
@@ -159,34 +166,40 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select class="form-control" name="cc_name_1">
-                                <option>NONE</option>
+                            <select class="form-control" name="cc_name_1" id="cc_name_1_id" disabled="disabled">
+                                <option>No Preference</option>
                                 <option>Visa</option>
                                 <option>Mastercard</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="cc_percent_1"
-                               placeholder="Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="cc_percent_1"
+                                   placeholder="Percentage" id="cc_percent_1_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
 
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select class="form-control" name="cc_name_2">
-                                <option>NONE</option>
+                            <select class="form-control" name="cc_name_2" id="cc_name_2_id" disabled="disabled">
+                                <option>No Preference</option>
                                 <option>Visa</option>
                                 <option>Mastercard</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="number" min="1" max="100" class="form-control" name="cc_percent_2"
-                               placeholder="Percentage">
+                        <div class="input-group">
+                            <input type="number" min="1" max="100" class="form-control" name="cc_percent_2"
+                                   placeholder="Percentage" id="cc_percent_2_id" disabled="disabled">
+                            <span class="input-group-addon">%</span>
+                        </div>
                     </div>
                 </div>
 
-                </br>
+                <br>
                 <!--generate bottom and number of rows-->
                 <div class="row">
                     <div class="col-sm-2">
@@ -264,6 +277,98 @@
     </div>
 
 </div>
+
+<!-- js -->
+
+<script type="text/javascript">
+
+    {# enable and disable filter #}
+
+    {# gender #}
+    $("#checkGender").click(function () {
+        var isChecked = $(this).prop("checked");
+        if (!isChecked) {
+            $("#male_percent_id").attr('disabled', 'disabled');
+            $("#female_percent_id").attr('disabled', 'disabled');
+        }
+        else {
+            $("#male_percent_id").removeAttr('disabled');
+            $("#female_percent_id").removeAttr('disabled');
+        }
+    });
+
+    {#country#}
+    $("#checkCountry").click(function () {
+        var isChecked = $(this).prop("checked");
+        if (!isChecked) {
+            $("#country_percent_1_id").attr('disabled', 'disabled');
+            $("#country_percent_2_id").attr('disabled', 'disabled');
+            $("#country_name_1_id").attr('disabled', 'disabled');
+            $("#country_name_2_id").attr('disabled', 'disabled');
+        }
+        else {
+            $("#country_percent_1_id").removeAttr('disabled');
+            $("#country_percent_2_id").removeAttr('disabled');
+            $("#country_name_1_id").removeAttr('disabled');
+            $("#country_name_2_id").removeAttr('disabled');
+        }
+    });
+
+    {#race#}
+    $("#checkRace").click(function () {
+        var isChecked = $(this).prop("checked");
+        if (!isChecked) {
+            $("#race_percent_1_id").attr('disabled', 'disabled');
+            $("#race_percent_2_id").attr('disabled', 'disabled');
+            $("#race_name_1_id").attr('disabled', 'disabled');
+            $("#race_name_2_id").attr('disabled', 'disabled');
+        }
+        else {
+            $("#race_percent_1_id").removeAttr('disabled');
+            $("#race_percent_2_id").removeAttr('disabled');
+            $("#race_name_1_id").removeAttr('disabled');
+            $("#race_name_2_id").removeAttr('disabled');
+        }
+    });
+
+    {#credit card#}
+    $("#checkCard").click(function () {
+        var isChecked = $(this).prop("checked");
+        if (!isChecked) {
+            $("#cc_percent_1_id").attr('disabled', 'disabled');
+            $("#cc_percent_2_id").attr('disabled', 'disabled');
+            $("#cc_name_1_id").attr('disabled', 'disabled');
+            $("#cc_name_2_id").attr('disabled', 'disabled');
+        }
+        else {
+            $("#cc_percent_1_id").removeAttr('disabled');
+            $("#cc_percent_2_id").removeAttr('disabled');
+            $("#cc_name_1_id").removeAttr('disabled');
+            $("#cc_name_2_id").removeAttr('disabled');
+        }
+    });
+
+    {# dynamic value of percentage#}
+    $("#male_percent_id").change(function () {
+        var val = 100 - $(this).val();
+        $("#female_percent_id").val(val);
+    });
+
+    $("#country_percent_1_id").change(function () {
+        var val = 100 - $(this).val();
+        $("#country_percent_2_id").val(val);
+    });
+
+    $("#race_percent_1_id").change(function () {
+        var val = 100 - $(this).val();
+        $("#race_percent_2_id").val(val);
+    });
+    $("#cc_percent_1_id").change(function () {
+        var val = 100 - $(this).val();
+        $("#cc_percent_2_id").val(val);
+    });
+</script>
+
 </body>
 
 </html>
