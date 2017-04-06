@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>search using post</title>
-    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/bootstrap.min.css" %} "/>
+    <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/magic-check.css" %} "/>
 
 </head>
 
 
 <body>
-
+</br>
     <div class="container">
         <form action="/data/search-post" method="post">
             {% csrf_token %}
             <div class="container">
-                <!--name-->
+
+                <!--Name-->
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="check_list" value="name">
-                                <p5>Name</p5>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="name" id="checkName">
+                        <label for="checkName"> Name </label>
                     </div>
                 </div>
 
-                <!--gender-->
+                <!--Gender-->
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="check_list" value="gender">
-                                Gender
-                            </label>
-                        </div>
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="gender" id="checkGender">
+                        <label for="checkGender"> Gender </label>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -51,15 +44,12 @@
                     </div>
                 </div>
 
+
                 <!--country-->
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="check_list" value="country">
-                                Country
-                            </label>
-                        </div>
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="country" id="checkCountry">
+                        <label for="checkCountry"> Country </label>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group" >
@@ -71,12 +61,8 @@
                 <!--race-->
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="check_list" value="race">
-                                Race
-                            </label>
-                        </div>
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="race" id="checkRace">
+                        <label for="checkRace"> Race </label>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -88,12 +74,8 @@
                 <!--address-->
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="check_list" value="address">
-                                Address
-                            </label>
-                        </div>
+                        <input class="magic-checkbox" type="checkbox" name="check_list" value="address" id="checkAddress">
+                        <label for="checkAddress"> Address </label>
                     </div>
                     <div class="col-sm-4">
                     </div>
