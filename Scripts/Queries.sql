@@ -1,0 +1,1 @@
+﻿SELECT firstName FROM FirstName LIMIT 10;

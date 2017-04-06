@@ -35,15 +35,12 @@ DATABASES = {
 5. Load data into DB
 Step 1. Download/Open PgAdmin3 (PgAdmin4 doesn't work, don't bother)
 Step 2. Connect to the db using the credentials in settings.py
-Step 3. Run the scripts in the following order:
+Step 3. Run Setup.sql in PgAdmin3
 
-If you're testing the application, run test.sql
-If you're using the full db, run Country.sql, Race.sql, CountryRace.sql, FirstName.sql, LastName.sql, Address.sql
-
-## Making changes to DB
+## Making changes to DB (Delete this)
 1. Change models in model.py
-2. Run <code>python manage.py makemigrations</code> 
-3. Run <code>python manage.py migrate</code> 
+2. Run <code>python manage.py makemigrations</code>
+3. Run <code>python manage.py migrate</code>
 
 ## Create a user in DB
 1. Create superuser <code>python manage.py createsuperuser</code>
