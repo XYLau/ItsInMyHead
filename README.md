@@ -80,9 +80,9 @@ The instructions on how to setup the development environment is given below. Any
 ![systemdiagram](https://cloud.githubusercontent.com/assets/14009738/24766354/8a343922-1b2d-11e7-8b97-dfa3141df5a1.jpeg)
 
 The architecture used in Django can be explained using the Model-View-Controller (MVC) design methodology. It separates an application into three main logical components: the model, the view, and the controller and each of these components are built to handle specific development aspects of an application. In Dangjo the following can be related:
-    - Models.py - [ Model ]
-    - Template - [ View ]
-    - Views.py - [ Controller ]
+- Models.py - [ Model ]
+- Template - [ View ]
+- Views.py - [ Controller ]
 
 # Database Design
 
