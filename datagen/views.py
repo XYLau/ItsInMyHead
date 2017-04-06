@@ -5,3 +5,9 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Data Generator Page")
+
+def manual(request):
+    return HttpResponse("User Manual Page")
+
+def documentation(request):
+    return HttpResponse("Documentation Page")
