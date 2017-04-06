@@ -75,11 +75,26 @@ The instructions on how to setup the development environment is given below. Any
 
 ![directorydetail](https://cloud.githubusercontent.com/assets/14009738/24761068/f61222fa-1b1c-11e7-8bc5-bfcee8fedb3b.png)
 
-# Scalability
+# System Diagram
 
-The project has been restructured to allow minimal additions when scaling up its functionalities. Developers new to Django should complete the tutorials provided at https://docs.djangoproject.com/en/1.10/intro/tutorial01/.
+![systemdiagram](https://cloud.githubusercontent.com/assets/14009738/24766354/8a343922-1b2d-11e7-8b97-dfa3141df5a1.jpeg)
 
-# Running the project
+The architecture used in Django can be explained using the Model-View-Controller (MVC) design methodology. It separates an application into three main logical components: the model, the view, and the controller and each of these components are built to handle specific development aspects of an application. In Dangjo the following can be related:
+    - Models.py - [ Model ]
+    - Template - [ View ]
+    - Views.py - [ Controller ]
+
+# Database Design
+
+![erdiagram](https://cloud.githubusercontent.com/assets/14009738/24766375/965b858e-1b2d-11e7-9372-3f02b85cbc94.png)
+
+// need to add in explanation
+
+# Implementation
+
+Developers new to Django should complete the tutorials provided at  https://docs.djangoproject.com/en/1.10/intro/tutorial01/.
+
+## Running the project
 
 1. Open Bitnami Django Stack and navigate to the project directory
     <blockquote>$ cd <kbd>&lt;directory&gt;</kbd></blockquote>
@@ -88,7 +103,7 @@ The project has been restructured to allow minimal additions when scaling up its
 3. Open a browser and go to this link:
     <blockquote><kbd>http://127.0.0.1:8000/DataGenerator/</kbd></blockquote>
 
-# Modifying the database
+## Modifying the database
 
 Sample scripts have been provided in the Scripts folder in the Scripts directory. Developers unfamiliar with PostgreSQL should refer to other sources of information as required.
 1. Write the sql script that implements the modifications that you need to make or update the Setup.sql script if you wish to modify the default configurations upon installation
