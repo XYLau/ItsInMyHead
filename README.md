@@ -99,7 +99,15 @@ The architecture used in Django can be explained using the Model-View-Controller
 
 ![erdiagram](https://cloud.githubusercontent.com/assets/14009738/24766375/965b858e-1b2d-11e7-9372-3f02b85cbc94.png)
 
-// need to add in explanation
+The following outlines an overview of the relations involved:
+
+- Address - Stores realistic address information of different countries
+- Country - Stores real Country name and code
+- Race - Stores a set of available Race
+- FirstName - Stores first name of individuals of different Gender and Race
+- LastName - Stores last name of individuals of different Gender and Race
+- Gender - Stores the different type of Gender
+- CCCompany - Stores credit card relevant information
 
 # Implementation
 
