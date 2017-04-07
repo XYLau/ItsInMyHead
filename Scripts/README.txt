@@ -9,7 +9,7 @@ Please run the scripts in the following order*:
 5. FirstName.sql		(1189)
 6. LastName.sql			(1133)
 7. Address.sql			(989)
-8. CCCompany.sql		(0)
+8. CCCompany.sql		(90)
 
 * Please make sure that the DB is empty (please drop all existing tables before that)
 
