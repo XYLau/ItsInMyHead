@@ -1,13 +1,17 @@
 import itertools
-from django.db import connection
+from django.db import connections
+import decimal
 
 def queryNames(limit):
     # Build firstName query
     query = "SELECT firstName FROM FirstName LIMIT " + str(limit) + ";"
-    with connection.cursor() as cursor:
+    try:
+        cursor = connections['postgres'].cursor()
         cursor.execute(query)
         for row in cursor.fetchall():
             print row
+    finally:
+        cursor.close()
 
 def permuteNameByRace(names, race, limit):
     permu = dict()
@@ -43,8 +47,14 @@ def joinNames(arr1, arr2, limit):
     result["Name"] = names
     return result
 
-a = [1,2,3]
-b = ['a','b','c']
+a = [["a", "b", "c"], ["1", "2", "3"]]
 
-queryNames(10)
-# print joinNames(b, a, 10)
+# print a[0] + " " + a[1]
+
+# c = []
+# for i in range(0, len(a[0])):
+#     c.append(str(a[0][i]) + " " + str(a[1][i]))
+# print c
+#
+# a[0].extend(a[1])
+# print a[0]
