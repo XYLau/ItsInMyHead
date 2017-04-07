@@ -84,8 +84,7 @@ def search_post(request):
             else:
                 dataset.set_cc("No Preference", 100, "No Preference", 0)
 
-        # Build Query from Indicator ind
-        # For Debug Purposes
+        # Build Query from Dataset's dataset
         names = []
         genders = []
         countries = []
@@ -143,15 +142,13 @@ def search_post(request):
                 query_from = " FROM CCCompany"
                 query_where = ""
                 query = query_select + query_from + query_where + query_limit
-                results = execute(query, 1)
-                print "results[] = ", results
+                results = execute(query, 2)
 
                 # form credit card number
                 if results != [[]]:
                     for i in range(0, len(results)):
                         prefix = to_int(results[i][0])
                         length = to_int(results[i][1])
-                        print "query prefix, length = ", prefix,", ", length
                         ccards.append(generate_credit_card_num(prefix, length))
         # Randomize based on statistics distribution
 
@@ -165,32 +162,26 @@ def search_post(request):
 # Converts each record into a dictionary and returns a list of dictionaries
 def convert_to_dict(addresses, ccards, countries, dataset, genders, limit, names, races):
     display = []
-    print "names = ", names
-    print "genders = ", genders
-    print "countries = ", countries
-    print "race = ", races
-    print "address = ", addresses
-    print "ccards = ", ccards
     for i in range(0, limit):
         record = dict()
         if dataset.get_names()[0]:
             record["Name"] = names[i % len(names)]
-            print record["Name"]
+            # print record["Name"]
         if dataset.get_gender()[0]:
             record["Gender"] = genders[i % len(genders)]
-            print record["Gender"]
+            # print record["Gender"]
         if dataset.get_country()[0]:
             record["Country"] = countries[i % len(countries)]
-            print record["Country"]
+            # print record["Country"]
         if dataset.get_race()[0]:
             record["Race"] = races[i % len(races)]
-            print record["Race"]
+            # print record["Race"]
         if dataset.get_address()[0]:
             record["Address"] = addresses[i % len(addresses)]
-            print record["Address"]
+            # print record["Address"]
         if dataset.get_cc()[0]:
             record["CreditCard"] = ccards[i % len(ccards)]
-            print record["CreditCard"]
+            # print record["CreditCard"]
         display.append(record)
     return display
 
@@ -255,7 +246,6 @@ def luhn_checksum(partial_card):
 
 # Generates credit card numbers from (int) prefix and (int) length
 def generate_credit_card_num(prefix, length):
-    print "prefix = ", prefix
     credit_card_num_array = list(str(prefix))
     length_left = length - len(str(prefix)) - 1
     for index in range(0, int(length_left)):
