@@ -51,8 +51,8 @@ class Dataset(object):
     def set_race(self, race1_name, race1_perc, race2_name, race2_perc):
         self.race = [True, race1_name, race1_perc, race2_name, race2_perc]
 
-    def set_address(self, address1_name, address1_perc, address2_name, address2_perc):
-        self.address = [True, address1_name, address1_perc, address2_name, address2_perc]
+    def set_address(self):
+        self.address = [True]
 
-    def set_cc(self):
-        self.cc = [True]
+    def set_cc(self, cc_name_1, cc_percent_1, cc_name_2, cc_percent_2):
+        self.cc = [True, cc_name_1, cc_percent_1, cc_name_2, cc_percent_2]
