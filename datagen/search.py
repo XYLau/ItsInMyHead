@@ -1,3 +1,4 @@
+from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.views.decorators import csrf
@@ -53,6 +54,7 @@ def search_post(request):
                     dataset.set_country("No Preference", 100, "No Preference", 0)
             else:
                 dataset.set_country("No Preference", 100, "No Preference", 0)
+
         if "race" in check_list:
             race_name_1 = request.POST['race_name_1']
             race_name_2 = request.POST['race_name_2']
@@ -104,7 +106,7 @@ def search_post(request):
                 # form name
                 if result != [[]]:
                     for i in range(0, len(result)):
-                        names.append(str(result[i][0]) + " " + str(result[i][1]))
+                        names.append((result[i][0]) + " " + (result[i][1]))
                 else:
                     dataset.names = [False]
             if dataset.get_gender()[0]:
@@ -116,16 +118,25 @@ def search_post(request):
             if dataset.get_country()[0]:
                 query_select = "SELECT countryName"
                 query_from = " FROM Country"
-                query_where = ""
+                # if dataset.get_country()[1] == "Malaysia":
+                #     query_where = " WHERE countryName = 'Malaysia'"
+                if dataset.get_country()[1] != "No Preference":
+                    query_where = " WHERE countryName = '" + dataset.get_country()[1] + "'"
+                else:
+                    query_where = ""
                 query = query_select + query_from + query_where + query_limit
                 countries = execute(query, 1)
+                print "countries = ", countries
             if dataset.get_race()[0]:
                 query_select = "SELECT raceDesc"
                 query_from = " FROM Race"
-                query_where = ""
+                if dataset.get_race()[1] != "No Preference":
+                    query_where = " WHERE raceDesc = '" + dataset.get_race()[1] + "'"
+                else:
+                    query_where = ""
                 query = query_select + query_from + query_where + query_limit
                 races = execute(query, 1)
-            if dataset.get_address()[0] :
+            if dataset.get_address()[0]:
                 query_select = "SELECT addressDesc, countryName, postalCode"
                 query_from = " FROM Address, Country"
                 query_where = " WHERE Address.countryCode = Country.countryCode"
@@ -134,7 +145,7 @@ def search_post(request):
                 # form address
                 if result != [[]]:
                     for i in range(0, len(result)):
-                        addresses.append(str(result[i][0]) + ", " + str(result[i][1]) + " " + str(result[i][2]))
+                        addresses.append((result[i][0]) + ", " + (result[i][1]) + " " + (result[i][2]))
                 else:
                     dataset.addresses = [False]
             if dataset.get_cc()[0]:
@@ -150,6 +161,7 @@ def search_post(request):
                         prefix = to_int(results[i][0])
                         length = to_int(results[i][1])
                         ccards.append(generate_credit_card_num(prefix, length))
+
         # Randomize based on statistics distribution
 
         # Convert into list of dict where each dict = 1 record
@@ -202,8 +214,8 @@ def validate_rows(rows):
 # Validate percentage pairs
 def validate_percentage(percent_1, percent_2):
     # Check sum = 100% and no negative values
-    if percent_1 + percent_2 == 100 \
-            and percent_1 >= 0 and percent_2 >= 0:
+    sum = to_int(percent_1) + to_int(percent_2)
+    if sum == 100 and percent_1 > 0 and percent_2 > 0:
         return True
     else:
         return False
@@ -219,7 +231,7 @@ def execute(query, num_cols):
             for row in cursor.fetchall():
                 record = []
                 for r in range(0, num_cols):
-                    record.append(str(row[r]))
+                    record.append(row[r])
                 result.append(record)
         elif num_cols == 1:
             for row in cursor.fetchall():
@@ -229,7 +241,7 @@ def execute(query, num_cols):
         cursor.close()
     return result
 
-
+# Converts string number to int
 def digits_of(number):
     return [int(i) for i in number]
 
