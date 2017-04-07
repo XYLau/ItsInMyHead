@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Guide</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/bootstrap.min.css" %} "/>
+        <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/magic-check.css" %} "/>
+
+    </head>
+    <body>
+        <div class="container"> 
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/DataGenerator/">Data Generator</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/DataGenerator/manual">User Manual</a></li>
+                        <li><a href="/DataGenerator/documentation">Documentation</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container">
+                <h1><u>ItsInMyHead User Guide</u></h1>
+                <p>You will be welcome with Data Generator form page as the following:</p>
+
+                <img class="img-responsive center-block" src="{% static "datagen/images/view1.jpeg" %}">
+                <br/>
+
+                <fieldset>
+                    <legend>Navigation Menu Bar</legend>
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Data Generator</h4>
+                            <em class="list-group-item-text">This is the <mark>Data Generator form</mark> page as shown above.</em>
+                            <blockquote>Access the page with: <kbd>http://127.0.0.1:8000/DataGenerator/</kbd></blockquote>
+                        </div>
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">User Manual</h4>
+                            <em class="list-group-item-text">This is the <mark>User Manual</mark> page. <span class="text-info">[Current Page]</span></em>
+                            <blockquote>Access the page with: <kbd>http://127.0.0.1:8000/DataGenerator/manual</kbd></blockquote>
+                        </div>
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Documentation</h4>
+                            <em class="list-group-item-text">This is the <mark>Documentation</mark> page where developers gets information about program implementation.</em>
+                            <blockquote>Access the page with: <kbd>http://127.0.0.1:8000/DataGenerator/documentation</kbd></blockquote>
+                        </div>
+                    </div>
+
+                    <legend>Data Generator Form</legend>
+                    <p>The User Interface (UI) offers the following selection of input: </p>
+                    <ul>
+                        <li>Data-type(s) <span class="text-warning">[ Name, Gender, Country, Race, Address, Credit Card ]</span></li>
+                        <li>Number of records <span class="text-warning">[ range from 0 to 1000 ]</span></li>
+                        <li>Statistic distribution <span class="text-warning">[ optional ]</span></li>
+                    </ul>
+
+                    <br/>
+                    <h4>Statistic distribution field</h4>
+
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Gender</h4>
+                            <em class="list-group-item-text">User can indicate the percentage as provided in the textbox. Further validation is provided for the sum of <code>Male & Female</code> percentage. <span class="text-info">[ Total of 100% ]</span>.</em>
+                        </div>
+                         <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Country | Race | Credit Card</h4>
+                             <em class="list-group-item-text">User are limited to <code>2 or lesser filter</code> of distribution.</em>
+                        </div>
+                         <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Address</h4>
+                            <em class="list-group-item-text">The program has <code>no application</code> for this field statistical distribution as Address is a subset of Country.</em>
+                        </div>
+                    </div>
+
+                    <legend>Example of selection</legend>
+                    <img class="img-responsive center-block" src="{% static "datagen/images/view4.png" %}">
+                    
+                    <legend>Result panel for generated data</legend>
+                    <p>Data Generator supports the following <strong>2</strong> type of display:</p>
+                    
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Table</h4>
+                            <em class="list-group-item-text">In the <code>Table</code> display view, data generated are shown in a table.</em>
+                            <img class="img-responsive center-block" src="{% static "datagen/images/view2.png" %}">
+                        </div>
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">SQL</h4>
+                            <em class="list-group-item-text">In the <code>SQL</code> display view, data generated are shown as <code>SQL DDL CREATE & INSERT statement</code>.</em>
+                             <img class="img-responsive center-block" src="{% static "datagen/images/view3.png" %}">
+                        </div>
+                    </div>
+
+                </fieldset>
+                
+
+
+                
+
+               
+            </div>
+
+        </div>
+    </body>
+</html>

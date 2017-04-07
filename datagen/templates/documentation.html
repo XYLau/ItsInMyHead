@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>System Document</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/bootstrap.min.css" %} "/>
+        <link rel="stylesheet" type="text/css" href=" {% static "datagen/bootstrap/css/magic-check.css" %} "/>
+
+    </head>
+    <body>
+        <div class="container">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/DataGenerator/">Data Generator</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/DataGenerator/manual">User Manual</a></li>
+                        <li class="active"><a href="/DataGenerator/documentation">Documentation</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container">
+                <h1><u>What is ItsInMyHead</u></h1>
+                <p>ItsInMyHead is a data generator that takes input parameters as a relation schema and generates output as a set of realistic data from selected domains. This tool is unique in providing realistic data obtained from sources including Google Maps (for addresses), using Luhn’s algorithm and referencing authentic Credit Card Prefixes (for Credit Card numbers) among many others.</p>
+                <p>This tool allows users to generate tables with realistic data such as first and last names of person by country of origin or race or gender, countries, race, addresses by country and credit card numbers by credit card companies. The functionalities of this tool will be explored in greater detail in the following sections. Additional features envisioned by the team are also outlined in the development roadmap provided.
+                </p>
+                <p>This system is easily extensible if new domains and data for these domains become available. Instructions on how this can be done are provided under Scalability. Existing or new data can be correlated as required by the developer, from extending or utilising the existing database schema.</p>
+                <br/>
+                <fieldset>
+                    <legend>Software Used</legend>
+                    <ul>
+                        <li>Bitnami Django Stack 1.10.5 </li>
+                        <li>Python 2.7.12 (default installation from django stack)</li>
+                        <li>Pgadmin3</li>
+                    </ul>
+                </fieldset>
+
+                <h1><u>Setting up your environment</u></h1>
+                <p>The instructions on how to setup the development environment is given below. Any software installation required has been appended to the instructions for your convenience. </p>
+                <fieldset>
+                    <legend>Installing Bitnami</legend>
+                    <ol>
+                        <li>Download Bitnami Django From <a href="https://bitnami.com/stack/django/installer">https://bitnami.com/stack/django/installer</a></li>
+                        <li>Install the files locally <span class="text-info">(henceforth known as installation directory)</span></li>
+                        <li><span class="bg-primary"> IMPORTANT!</span> Select postgres as the database to be used and use the following parameters
+                            <ul>
+                                <li>Port number: <code>5432</code></li>
+                                <li>Database name: <code>postgres</code></li>
+                                <li>User: <code>postgres</code></li>
+                                <li>Password: <code>postgres</code></li>
+                            </ul>
+                        </li>
+                        <li>Complete the rest of the installation</li>
+                    </ol>
+
+                    <br/>
+                    <legend>Clone the project</legend>
+                    <ol>
+                        <li>Fork the project from our repository: <a href="https://github.com/XYLau/ItsInMyHead"> https://github.com/XYLau/ItsInMyHead</a></li>
+                        <li>Clone the forked repository into local directory <span class="text-info">henceforth known as project directory</span></li>
+                    </ol>
+
+                    <br/>
+                    <legend>Configuration</legend>
+                    <div>
+                        <mark><span style=" font-size:1.5em;">ItsInMyHead/settings.py</span> </mark>
+                        <br/>
+                        <br/>
+                        <ol>
+                            <li>Open <code>settings.py</code></li>
+                            <li>Update timezone in <mark><span style="color:red;">TIME_ZONE</span></mark> tab ensure that declaration is changed to your laptop respective acceptable value. if you're using Mac, change the value to <code>'Asia/Singapore'</code>. Otherwise, use <code>'SG'</code>.<br/>
+                                <br/>
+                                <pre style="text-align:center; white-space:normal;">
+                            TIME_ZONE = <span class="text-danger">**value**</span>
+                            </pre></li>
+                            <li>Update the directory under <mark><span style="color:red;">DATABASES</span></mark> tab to the local directory that you've installed django's postgres. An example has been provided in the source code.<br/>
+                                <br/>
+
+                                <pre style="text-align:left; white-space:normal;">
+                            DATABASES = { <br/>
+                                &emsp; 'default': {<br/>
+                                &emsp; &emsp; &emsp;'ENGINE': 'django.db.backends.postgresql_psycopg2',<br/>
+                                &emsp; &emsp; &emsp;'NAME': 'postgres',<br/>
+                               &emsp; &emsp; &emsp;'HOST': '<span class="text-danger">**your drive**</span>\Bitnami\djangostack-1.10.5-0\postgresql',<br/>
+                               &emsp; &emsp; &emsp;'PORT': '5432',<br/>
+                               &emsp; &emsp; &emsp;'USER': 'postgres',<br/>
+                               &emsp; &emsp; &emsp;'PASSWORD': 'postgres'<br/>
+                                &emsp;&emsp;}<br/>
+                                }
+                       </pre></li>
+                        </ol>
+                    </div>
+
+                    <br/>
+                    <legend>Setup the database</legend>
+                    <ol>
+                        <li>Open Bitnami Django Stack and navigate to the project directory</li>
+                        <li>Setup the database by running the command <kbd>python manage.py migrate</kbd></li>
+                        <li>Create a superuser by running the command <kbd>python manage.py createsuperuser</kbd> using the following credentials:
+                            <ul>
+                                <li>Username: <code>admin</code></li>
+                                <li>Email address: <code>admin@example.com</code></li>
+                                <li>Password: <code>postgres</code></li>
+                            </ul></li>
+                        <li>Check that it works by running the project using this command <kbd>python manage.py runserver</kbd></li>
+                        <li>Open a browser and go to this link: <kbd>http://127.0.0.1:8000/DataGenerator/</kbd> and you should not see any errors appearing</li>
+                        <li>Download Pgadmin3 from <a href="https://www.pgadmin.org/download/">https://www.pgadmin.org/download/</a>. <span class="text-warning">Do not attempt to use Pgadmin4 provided in the bitnami installation because there are fundamental compatibility issues. Tried and proven.</span></li>
+                        <li>Add a new connection to a server using the following credentials:
+                            <ul>
+                                <li>Host: <code>&lt;installation_directory\postgresql&gt;</code></li>
+                                <li>Port: <code>5432</code></li>
+                                <li>Maintenance DB: <code>postgres</code></li>
+                                <li>Username: <code>postgres</code></li>
+                                <li>Password: <code>postgres</code></li>
+                            </ul></li>
+                        <li>Click on <mark>Database > postgres</mark> and go to the navigation bar at the top and click onto <mark>Execute arbitrary SQL queries</mark></li>
+                        <li>Select and run <mark>Setup.sql</mark> from &lt;project_directory&gt;\ItsInMyHead\Scripts</li>
+                        <li>Go back to Bitnami Stack and update database environment variables by running this command <kbd>python manage.py shell</kbd></li>
+                        <li>Close the shell by typing <code>exit()</code> or <code>Ctrl-Z-Enter</code></li>
+                        <li>Run the server again using this command <kbd>python manage.py runserver</kbd></li>
+                        <li>Open a browser and go to this link: <kbd>http://127.0.0.1:8000/DataGenerator</kbd> and you should not see any errors appearing</li>
+                    </ol>
+                </fieldset>
+
+                <h1><u>Directory Structure</u></h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><img src="{% static "datagen/images/directory.png" %}"></td>
+                                <td>
+                                    <fieldset>
+                                        <legend>Folder</legend>
+                                        <div class="list-group">
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/static/datagen/bootstrap</h4>
+                                                <em class="list-group-item-text">Contains all <mark>Bootstrap</mark> files</em>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/static/datagen/images</h4>
+                                                <em class="list-group-item-text">Contains all <mark>Images</mark> used in the program</em>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/templates</h4>
+                                                <em class="list-group-item-text">Contains all <mark>HTML</mark> files</em>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>Program files</legend>
+                                        <div class="list-group">
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">ItsInMyHead/settings.py</h4>
+                                                <em class="list-group-item-text"><mark>Configuration</mark> file</em>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/urls.py</h4>
+                                                <em class="list-group-item-text">Program <mark>path</mark> indication</em>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/views.py</h4>
+                                                <em class="list-group-item-text">Program <mark>HTTP request</mark> indication</em>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <h4 class="list-group-item-heading">datagen/search.py</h4>
+                                                <em class="list-group-item-text">Internal <mark>POST</mark> method for Data Generator</em>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h1><u>System Diagram</u></h1>
+                    <img class="img-responsive center-block" src="{% static "datagen/images/systemDiagram.jpeg" %}">
+                <p>
+                    The architecture used in Django can be explained using the Model-View-Controller (MVC) design methodology. It separates an application into three main logical components: the model, the view, and the controller and each of these components are built to handle specific development aspects of an application. In Dangjo the following can be related:
+                </p>
+                <ul>
+                    <li>Models.py - [ Model ]</li>
+                    <li>Template - [ View ]</li>
+                    <li>Views.py - [ Controller ]</li>
+                </ul>
+                <br/>
+                
+                <fieldset>
+                    <legend>High-level Architecture</legend>
+                    <img class="img-responsive center-block" src="{% static "datagen/images/highLevelArch.png" %}">
+                    <br/>
+                    <legend>Low-level Architecture</legend>
+                    <img class="img-responsive center-block" src="{% static "datagen/images/lowLevelArch.png" %}">
+                    <br/>
+                    <ul>
+                        <li>Upon clicking the Submit Button, the Processor handles the request and fetches data from the Database then redirects back to the user window.</li>
+                        <li>Within the Processor, Parser acts as the controller then forwards to the Query Builder to build the relative SQL. Next, the Processor will execute the SQL to retrieve data from the Database.</li>
+                    </ul>
+                </fieldset>
+                
+            <h1><u>Database Design</u></h1>
+                <img class="img-responsive center-block" src="{% static "datagen/images/erDiagram.png" %}">
+                <br/>
+            <p>The following outlines an overview of the relations involved:
+                <ul>
+                    <li>Address - <span class="text-info">Stores realistic address information of different countries</span></li>
+                     <li>Country - <span class="text-info">Stores real Country name and code</span></li>
+                     <li>Race - <span class="text-info">Stores a set of available Race</span></li>
+                     <li>FirstName - <span class="text-info">Stores first name of individuals of different Gender and Race</span></li>
+                     <li>LastName - <span class="text-info">Stores last name of individuals of different Gender and Race</span></li>
+                    <li>Gender - <span class="text-info">Stores the different type of Gender</span></li>
+                    <li>CCCompany - <span class="text-info">Stores credit card relevant information</span></li>
+                </ul></p>
+
+            <h1><u>Implementation</u></h1>
+            <p>Developers new to Django should complete the tutorials provided at <a href="https://docs.djangoproject.com/en/1.10/intro/tutorial01/">https://docs.djangoproject.com/en/1.10/intro/tutorial01/</a>.</p>
+
+            <fieldset>
+                <legend>Running the project</legend>
+                <ol>
+                    <li>Open Bitnami Django Stack and navigate to the project directory<br/>
+                        <blockquote>$ <kbd>cd &lt;directory&gt;</kbd></blockquote></li>
+                    <li>Run the project<br/>
+                        <blockquote>$ <kbd>python manage.py runserver</kbd></blockquote></li>
+                    <li>Open a browser and go to this link:<br/>
+                        <blockquote><kbd>http://127.0.0.1:8000/DataGenerator/</kbd></blockquote></li>
+                </ol>
+
+                <legend>Modifying the database</legend>
+
+                <p>Sample scripts have been provided in the Scripts folder in the Scripts directory. Developers unfamiliar with PostgreSQL should refer to other sources of information as required.</p>
+                <ol>
+                    <li>Write the sql script that implements the modifications that you need to make or update the <mark>Setup.sql</mark> script if you wish to modify the default configurations upon installation</li>
+                    <li>Open Pgadmin3 and run the script</li>
+                    <li>Re-run the project by referring to the instructions given in the sub-section above.</li>
+                </ol>
+            </fieldset>
+
+            <h1><u>Future Expansions</u></h1>
+                <p>The project has been restructured to allow minimal additions when scaling up its functionalities. </p>
+            
+                <fieldset>
+                <legend>Data Classifications</legend>
+                    <p>To ease future additions of new types of data, we defined three key data classifications given below. The description of each are supplemented with examples of existing and possible applications. 
+                    </p>
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">Fixed Data</h4>
+                        <em class="list-group-item-text">This classification refers to data which are obtained and stored into the database. These data are typically obtained from external sources which are then cleaned, organised and stored into the database. For information that are unlikely to change (static), this would be the recommended classification to store the data into. This is currently implemented for the following data types: <span class="text-primary">Country, Race, Names, Gender, Address and Credit Card Company (CCCompany)</span>. The general process of processing these type of data will include building the queries as required in the Search module and executing the respective queries generated.</em>
+                    </div>
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">Automated Data</h4>
+                        <em class="list-group-item-text">This classification refers to data which do not require cleaning or processing and can be directly obtained either via algorithms or external APIs. This is currently implemented in part in generating the number sequences and check digits for <span class="text-primary">Credit Card numbers</span>. The process to generate this type of data would be to run the algorithm generation instead of the query generator. More details on integrating algorithms can be referenced in our source code. Unfortunately, this tool does not currently support integrating with external APIs. However, this is one of our priorities which will be highlighted in the next section (Roadmap).</em>
+                    </div>
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">Automated from Fixed Data</h4>
+                        <em class="list-group-item-text">This classification refers to a combination of the 2 abovementioned classifications. This is fully implemented in generating <span class="text-primary">Credit Card numbers</span>. The process of generating Credit Card numbers involves parsing and query generation in obtaining the prefixes of the respective credit card companies selected. Following which, a random string of numbers are created in accordance to the card number length. This string appended with the prefix obtained earlier will then be run through a verification algorithm, Luhn’s algorithm, which is commonly used in the market to verify Credit Card numbers, to obtain the check digit. Finally, the entire string is pieced together to form the Credit Card number.</em>
+                    </div>
+                </div>
+
+                <legend>Roadmap</legend>
+                   <img class="img-responsive center-block" src="{% static "datagen/images/roadMap.jpeg" %}">
+            </fieldset>
+
+            <br/><br/>
+        </div> 
+        </div>
+    </body>
+</html>
