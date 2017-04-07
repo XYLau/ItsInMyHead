@@ -152,3 +152,30 @@ This classification refers to a combination of the 2 abovementioned classificati
 ## Roadmap
 
 ![roadmap](https://cloud.githubusercontent.com/assets/14009738/24774446/7bcdf5bc-1b4b-11e7-9a91-f1d65bc0f5fb.jpeg)
+
+# Credits
+
+Our team would like to give thanks to the following web sources that contributed to our fixed data. 
+
+## Address
+
+- http://www.streetdirectory.com/
+- https://www.google.com.sg/maps/
+- http://postalcode.globefeed.com/Country_Postal_Code.asp
+
+## Name
+
+- http://www.muslimnames.info/
+- http://www.fantasynamegenerators.com/#realNames/
+
+## Country
+
+- https://www.state.gov/misc/list/
+
+## Country-race-statistic
+
+- https://www.infoplease.com/world/countries-world/ethnicity-and-race-countries
+
+## Credit-card
+
+- https://en.wikipedia.org/wiki/Payment_card_number
