@@ -58,3 +58,5 @@ a = [["a", "b", "c"], ["1", "2", "3"]]
 #
 # a[0].extend(a[1])
 # print a[0]
+
+print [int(i) for i in ["123"]]
