@@ -2,7 +2,8 @@
 # Validation of data is done here
 
 
-class Indicator(object):
+class Dataset(object):
+
     def __init__(self):
         self.rows = 100
         self.names = [False]

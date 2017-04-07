@@ -4,104 +4,137 @@ from django.views.decorators import csrf
 from django.db import connection
 
 from datagen.models import *
+from random import randint, random
 import copy
+import parser
+from Dataset import Dataset
 import itertools
+
 
 # search using post
 def search_post(request):
     display = []
-    if request.POST:
-        check_list = request.POST.getlist('check_list')
-        # default set 100 rows of data
-        rows = 100
-        if request.POST['rows']:
-            rows = int(request.POST['rows'])
 
-        # deal with gender filter
-        if "gender" in check_list:
-            # display.append("Gender Selected!")
-            gender = request.POST['gender']
+    # Pre-processing at parser module
+    dataset = parser.read_request(request)
 
-        # deal with country filter
-        if "country" in check_list:
-            # display.append("Country Selected!")
-            country = request.POST['country']
-            if country:
-                country_obj = Country.objects.filter(countryName=country)
-            else:
-                country_obj = Country.objects.all()
+    # Build Query from Indicator ind
+    datasets = []
+    names = []
+    genders = []
+    countries = []
+    races = []
+    addresses = []
+    ccards = []
 
-        # race filter
-        if "race" in check_list:
-            # display.append("Race Selected!")
-            race = request.POST['race']
-            if race:
-                race_obj = Race.objects.get(raceDesc=race)
+    limit = dataset.get_rows()
+    query_limit = " ORDER BY random() LIMIT " + str(limit) + ";"
+    if limit > 0:
+        # Name --> Gender, Country, Race
+        if dataset.get_names()[0]:
+            query_select = "SELECT firstName, lastName"
+            query_from = " FROM FirstName, LastName"
+            query_where = " WHERE FirstName.raceId = LastName.raceId"
+            query = query_select + query_from + query_where + query_limit
+            result = execute(query, 2)
+            # form name
+            for i in range(0, len(result[0])):
+                names.append(str(result[0][i]) + " " + str(result[1][i]))
+        if dataset.get_gender()[0]:
+            query_select = "SELECT genderDesc"
+            query_from = " FROM Gender"
+            query_where = ""
+            query = query_select + query_from + query_where + query_limit
+            genders.append(execute(query, 1))
+        if dataset.get_country()[0]:
+            query_select = "SELECT countryName"
+            query_from = " FROM Country"
+            query_where = ""
+            query = query_select + query_from + query_where + query_limit
+            countries.append(execute(query, 1))
+        if dataset.get_race()[0]:
+            query_select = "SELECT raceDesc"
+            query_from = " FROM Race"
+            query_where = ""
+            query = query_select + query_from + query_where + query_limit
+            races.append(execute(query, 1))
+        if dataset.get_address()[0] :
+            query_select = "SELECT addressDesc, countryName, postalCode"
+            query_from = " FROM Address, Country"
+            query_where = " WHERE Address.countryCode = Country.countryCode"
+            query = query_select + query_from + query_where + query_limit
+            result = execute(query, 3)
+            # form address
+            for i in range(0, len(result[0])):
+                addresses.append(str(result[0][i]) + ", " + str(result[1][i]) + "  " + str(result[2][i]))
+        if dataset.get_cc()[0]:
+            query_select = "SELECT prefix"
+            query_from = " FROM CCCompany"
+            query_where = ""
+            query = query_select + query_from + query_where + query_limit
+            ccards.append(execute(query, 1))
 
-        if "name" in check_list:
-            # display.append("Name Selected!")
-            first_name_obj = FirstName.objects.all()
-            last_name_obj = LastName.objects.all()
+    # Randomize based on statistics distribution
 
-        if "address" in check_list:
-            display.append("Address Selected!")
-            # TODO: select. wait until address model complete
-
-        # Select from db
-
-        # if name is selected
-        if "name" in check_list:
-            if "race" in check_list and race:
-                first_name_obj = first_name_obj.filter(raceId_id=race_obj.raceId)
-            if "gender" in check_list and gender:
-                first_name_obj = first_name_obj.filter(gender=gender)
-            for item_first in first_name_obj:
-                race_id = item_first.raceId_id
-
-                for item_last in last_name_obj.filter(raceId_id=race_id):
-                    attr = dict()
-                    # attr['FirstName'] = item_first.firstName
-                    # attr['LastName'] = item_last.lastName
-                    attr['Name'] = item_first.firstName + " " + item_last.lastName
-
-                    if "race" in check_list:
-                        attr['Race'] = Race.objects.get(raceId=race_id).raceDesc
-                    if "gender" in check_list:
-                        attr['Gender'] = item_first.gender
-
-                    if "address" in check_list:
-                        # TODO : finish address generate
-                        attr['Address'] = "Address"
-
-                    if "country" in check_list:
-                        for item_country in country_obj:
-                            attr_country = copy.copy(attr)
-                            attr_country['CountryName'] = item_country.countryName
-                            attr_country['CountryCode'] = item_country.countryCode
-                            display.append(attr_country)
-                    else:
-                        display.append(attr)
-
-        if len(display) > rows:
-            del display[rows:]
-
+    # Convert into list of dict where each dict = 1 record
+    display = []
+    for i in range(0, limit):
+        record = dict()
+        if dataset.get_names()[0]:
+            record["Names"] = names[i % len(names)]
+        if dataset.get_gender()[0]:
+            record["Gender"] = genders[i % len(genders)]
+        if dataset.get_country()[0]:
+            record["Country"] = countries[i % len(countries)]
+        if dataset.get_race()[0]:
+            record["Race"] = races[i % len(races)]
+        if dataset.get_address()[0]:
+            record["Address"] = addresses[i % len(addresses)]
+        if dataset.get_cc()[0]:
+            record["CreditCard"] = ccards[i % len(ccards)]
+        display.append(record)
+    # # Add records to display until target length is reached
+    # if len(display) > dataset.get_rows():
+    #     del display[dataset.get_rows():]
     return render(request, "generate.html", {'datas': display})
 
-def joinNames(arr1, arr2, limit):
-    result = dict()
-    names = []
-    count = 0
-    isLimit = False
 
-    while (isLimit == False):
-        for r in itertools.product(arr1, arr2):
-            if count < limit:
-                newName = str(r[0]) + str(r[1])
-                names.append(newName)
-                print "count = ", count,", name = ", newName
-                count += 1
-            else:
-                isLimit = True
-                break
-    result["Name"] = names
+# Executes SQL Query on DB, returns list of values (without header)
+def execute(query, num_cols):
+    result = []
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query)
+        for row in cursor.fetchall():
+            for r in range(0, num_cols):
+                result.append(row[r])
+    finally:
+        cursor.close()
     return result
+
+
+def digits_of(number):
+    return [int(i) for i in str(number)]
+
+
+def luhn_checksum(partial_card):
+    odd_digits = partial_card[-1::-2]
+    even_digits = partial_card[-2::-2]
+    total = sum(digits_of(odd_digits))
+    for digit in even_digits:
+        total += sum(2 * (digits_of(digit)))
+    return str((9 * total) % 10)
+
+
+# def generate_credit_card_num(credit_card_obj):
+#     credit_card = random.choice(credit_card_obj)
+#     prefix = str(credit_card.prefix)
+#     credit_card_num_array = list(prefix)
+#     length = credit_card.length
+#     lengthLeft = length - len(prefix) - 1
+#     for index in range(0, int(lengthLeft)):
+#         credit_card_num_array.append(str(randint(0, 9)))
+#
+#     credit_card_num_array.append(luhn_checksum(ccn))
+#     credit_card_num = ''.join(credit_card_num_array)
+#    return credit_card_num
