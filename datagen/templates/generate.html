@@ -181,56 +181,56 @@
                         <label for="checkAddress"> Address </label>
                     </div>
 
-{#                    <div class="col-sm-2">#}
-{#                        <div class="form-group">#}
-{#                            <select class="form-control" name="address_name_1" id="address_name_1_id"#}
-{#                                    disabled="disabled">#}
-{#                                <option>No Preference</option>#}
-{#                                <option> Australia</option>#}
-{#                                <option> Canada</option>#}
-{#                                <option> Hong Kong</option>#}
-{#                                <option> Malaysia</option>#}
-{#                                <option> Philippines</option>#}
-{#                                <option> Singapore</option>#}
-{#                                <option> Thailand</option>#}
-{#                                <option> United Kingdom</option>#}
-{#                                <option> United States</option>#}
-{#                                <option> Indonesia</option>#}
-{#                            </select>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-sm-3">#}
-{#                        <div class="input-group">#}
-{#                            <input type="number" min="1" max="100" class="form-control" name="address_percent_1"#}
-{#                                   placeholder="Percentage" id="address_percent_1_id" disabled="disabled">#}
-{#                            <span class="input-group-addon">%</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-sm-2">#}
-{#                        <div class="form-group">#}
-{#                            <select class="form-control" name="address_name_2" id="address_name_2_id"#}
-{#                                    disabled="disabled">#}
-{#                                <option>No Preference</option>#}
-{#                                <option> Australia</option>#}
-{#                                <option> Canada</option>#}
-{#                                <option> Hong Kong</option>#}
-{#                                <option> Malaysia</option>#}
-{#                                <option> Philippines</option>#}
-{#                                <option> Singapore</option>#}
-{#                                <option> Thailand</option>#}
-{#                                <option> United Kingdom</option>#}
-{#                                <option> United States</option>#}
-{#                                <option> Indonesia</option>#}
-{#                            </select>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-sm-3">#}
-{#                        <div class="input-group">#}
-{#                            <input type="number" min="1" max="100" class="form-control" name="address_percent_2"#}
-{#                                   placeholder="Percentage" id="address_percent_2_id" disabled="disabled">#}
-{#                            <span class="input-group-addon">%</span>#}
-{#                        </div>#}
-{#                    </div>#}
+                    {#                    <div class="col-sm-2">#}
+                    {#                        <div class="form-group">#}
+                    {#                            <select class="form-control" name="address_name_1" id="address_name_1_id"#}
+                    {#                                    disabled="disabled">#}
+                    {#                                <option>No Preference</option>#}
+                    {#                                <option> Australia</option>#}
+                    {#                                <option> Canada</option>#}
+                    {#                                <option> Hong Kong</option>#}
+                    {#                                <option> Malaysia</option>#}
+                    {#                                <option> Philippines</option>#}
+                    {#                                <option> Singapore</option>#}
+                    {#                                <option> Thailand</option>#}
+                    {#                                <option> United Kingdom</option>#}
+                    {#                                <option> United States</option>#}
+                    {#                                <option> Indonesia</option>#}
+                    {#                            </select>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="col-sm-3">#}
+                    {#                        <div class="input-group">#}
+                    {#                            <input type="number" min="1" max="100" class="form-control" name="address_percent_1"#}
+                    {#                                   placeholder="Percentage" id="address_percent_1_id" disabled="disabled">#}
+                    {#                            <span class="input-group-addon">%</span>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="col-sm-2">#}
+                    {#                        <div class="form-group">#}
+                    {#                            <select class="form-control" name="address_name_2" id="address_name_2_id"#}
+                    {#                                    disabled="disabled">#}
+                    {#                                <option>No Preference</option>#}
+                    {#                                <option> Australia</option>#}
+                    {#                                <option> Canada</option>#}
+                    {#                                <option> Hong Kong</option>#}
+                    {#                                <option> Malaysia</option>#}
+                    {#                                <option> Philippines</option>#}
+                    {#                                <option> Singapore</option>#}
+                    {#                                <option> Thailand</option>#}
+                    {#                                <option> United Kingdom</option>#}
+                    {#                                <option> United States</option>#}
+                    {#                                <option> Indonesia</option>#}
+                    {#                            </select>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="col-sm-3">#}
+                    {#                        <div class="input-group">#}
+                    {#                            <input type="number" min="1" max="100" class="form-control" name="address_percent_2"#}
+                    {#                                   placeholder="Percentage" id="address_percent_2_id" disabled="disabled">#}
+                    {#                            <span class="input-group-addon">%</span>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
 
                 </div>
                 <br>
@@ -343,8 +343,8 @@
                                 {% if datas.0.Gender %}
                                     <th> Gender</th>
                                 {% endif %}
-                                {% if datas.0.CountryName %}
-                                    <th> Country Name</th>
+                                {% if datas.0.Country %}
+                                    <th> Country</th>
                                 {% endif %}
                                 {% if datas.0.Race %}
                                     <th> Race</th>
@@ -368,8 +368,8 @@
                                     {% if item.Gender %}
                                         <td>{{ item.Gender }}</td>
                                     {% endif %}
-                                    {% if item.CountryName %}
-                                        <td>{{ item.CountryName }}</td>
+                                    {% if item.Country %}
+                                        <td>{{ item.Country }}</td>
                                     {% endif %}
                                     {% if item.Race %}
                                         <td>{{ item.Race }}</td>
@@ -404,7 +404,7 @@
                                     gender varchar(5), <br>
                                 {% endif %}
                                 {% if datas.0.Country %}
-                                    name country(30), <br>
+                                    country varchar(30), <br>
                                 {% endif %}
                                 {% if datas.0.Race %}
                                     race varchar(20), <br>
@@ -423,44 +423,74 @@
                                     {% with item|length as counter %}
                                         INSERT INTO Generated(
                                         {% if item.Name %}
-                                            name,
+                                            name
+                                            {% if item.Gender or item.Country or item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Gender %}
-                                            gender,
+                                            gender
+                                            {% if item.Country or item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Country %}
-                                            country,
+                                            country
+                                            {% if item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Race %}
-                                            race,
+                                            race
+                                            {% if item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Address %}
-                                            address,
+                                            address
+                                            {% if item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.CreditCard %}
-                                            credit_card,
+                                            credit_card
                                         {% endif %}
                                         )
 
                                         {#  values  #}
                                         VALUES (
                                         {% if item.Name %}
-                                            '{{ item.Name }}',
+                                            '{{ item.Name }}'
+                                            {% if item.Gender or item.Country or item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Gender %}
-                                            '{{ item.Gender }}',
+                                            '{{ item.Gender }}'
+                                            {% if item.Country or item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Country %}
-                                            '{{ item.Country }}',
+                                            '{{ item.Country }}'
+                                            {% if item.Race or item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Race %}
-                                            '{{ item.Race }}',
+                                            '{{ item.Race }}'
+                                            {% if item.Address or item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.Address %}
-                                            '{{ item.Address }}',
+                                            '{{ item.Address }}'
+                                            {% if item.CreditCard %}
+                                                ,
+                                            {% endif %}
                                         {% endif %}
                                         {% if item.CreditCard %}
-                                            '{{ item.CreditCard }}',
+                                            '{{ item.CreditCard }}'
                                         {% endif %}
 
                                         ); <br>
@@ -533,21 +563,21 @@
     });
 
     {#address#}
-{#    $("#checkAddress").click(function () {#}
-{#        var isChecked = $(this).prop("checked");#}
-{#        if (!isChecked) {#}
-{#            $("#address_percent_1_id").attr('disabled', 'disabled');#}
-{#            $("#address_percent_2_id").attr('disabled', 'disabled');#}
-{#            $("#address_name_1_id").attr('disabled', 'disabled');#}
-{#            $("#address_name_2_id").attr('disabled', 'disabled');#}
-{#        }#}
-{#        else {#}
-{#            $("#address_percent_1_id").removeAttr('disabled');#}
-{#            $("#address_percent_2_id").removeAttr('disabled');#}
-{#            $("#address_name_1_id").removeAttr('disabled');#}
-{#            $("#address_name_2_id").removeAttr('disabled');#}
-{#        }#}
-{#    });#}
+    {#    $("#checkAddress").click(function () {#}
+    {#        var isChecked = $(this).prop("checked");#}
+    {#        if (!isChecked) {#}
+    {#            $("#address_percent_1_id").attr('disabled', 'disabled');#}
+    {#            $("#address_percent_2_id").attr('disabled', 'disabled');#}
+    {#            $("#address_name_1_id").attr('disabled', 'disabled');#}
+    {#            $("#address_name_2_id").attr('disabled', 'disabled');#}
+    {#        }#}
+    {#        else {#}
+    {#            $("#address_percent_1_id").removeAttr('disabled');#}
+    {#            $("#address_percent_2_id").removeAttr('disabled');#}
+    {#            $("#address_name_1_id").removeAttr('disabled');#}
+    {#            $("#address_name_2_id").removeAttr('disabled');#}
+    {#        }#}
+    {#    });#}
 
     {#credit card#}
     $("#checkCard").click(function () {
@@ -583,10 +613,10 @@
         $("#race_percent_2_id").val(val);
     });
 
-{#    $("#address_percent_1_id").change(function () {#}
-{#        var val = 100 - $(this).val();#}
-{#        $("#address_percent_2_id").val(val);#}
-{#    });#}
+    {#    $("#address_percent_1_id").change(function () {#}
+    {#        var val = 100 - $(this).val();#}
+    {#        $("#address_percent_2_id").val(val);#}
+    {#    });#}
 
     $("#cc_percent_1_id").change(function () {
         var val = 100 - $(this).val();
@@ -609,7 +639,7 @@
         $("#table_data").show();
     });
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("#sql_data").hide();
     });
 
