@@ -25,12 +25,15 @@ SECRET_KEY = '*di8(1ek9$mj@tlmjz3ywph7n46#c#(9$v4g3-jy-ce62-ly$b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "*"
+    ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'datagen.apps.DatagenConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,7 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'HOST': 'C:\Bitnami\djangostack-1.10.5-0\postgresql',
+        'HOST': '/Applications/djangostack-1.10.5-0/postgresql',
+        # 'HOST': 'C:\Bitnami\djangostack-1.10.5-0\postgresql',
         'PORT': '5432',
         'USER': 'postgres',
         'PASSWORD': 'postgres'
@@ -104,11 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
+    # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
+# TIME_ZONE = 'SG'
 
 USE_I18N = True
 
